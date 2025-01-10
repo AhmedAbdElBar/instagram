@@ -3,11 +3,13 @@ import 'package:instagram/core/colors_thems.dart';
 
 class Textfield extends StatelessWidget {
   late String text;
-  Textfield({required this.text});
+  final TextEditingController controller;
+  Textfield({required this.text, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
           hintText: text,
           hintStyle: TextStyle(

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "518795673433",
+    "project_id": "graduat-project-for-amit",
+    "storage_bucket": "graduat-project-for-amit.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518795673433:android:552d26408dd1622d019648",
+        "android_client_info": {
+          "package_name": "com.example.instagram"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeGjymFHtRU0ghg18OxM2miGnL5A8R_0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

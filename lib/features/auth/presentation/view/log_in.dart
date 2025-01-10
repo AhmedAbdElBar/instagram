@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/colors_thems.dart';
-import 'package:instagram/features/auth/presentation/Register.dart';
+import 'package:instagram/features/auth/presentation/view/Register.dart';
 import 'package:instagram/features/auth/presentation/widget/buttonWidget.dart';
 import 'package:instagram/features/auth/presentation/widget/textField.dart';
 
@@ -11,9 +11,9 @@ class LogIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ThemingColor.maincolor,
-      ),
+        appBar: AppBar(
+          backgroundColor: ThemingColor.maincolor,
+        ),
         backgroundColor: ThemingColor.maincolor,
         body: Padding(
           padding: const EdgeInsets.all(15),
@@ -48,7 +48,7 @@ class LogIn extends StatelessWidget {
                     children: [
                       Text(
                         "Do not have an email? ",
-                        style: TextStyle(fontSize: 13),
+                        style: TextStyle(fontSize: 13,fontWeight: FontWeight.w400),
                       ),
                       InkWell(
                         onTap: () {

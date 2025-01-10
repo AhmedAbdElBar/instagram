@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/features/auth/presentation/Register.dart';
-import 'package:instagram/features/auth/presentation/log_in.dart';
+import 'package:instagram/features/auth/presentation/view/Register.dart';
+import 'package:instagram/features/auth/presentation/view/log_in.dart';
 
 void main() {
   runApp(const MyApp());

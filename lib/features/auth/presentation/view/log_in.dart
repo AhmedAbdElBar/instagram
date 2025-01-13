@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/features/auth/data/login_data.dart';
 import 'package:instagram/features/auth/presentation/view/Register.dart';
-import 'package:instagram/features/auth/presentation/widget/buttonWidget.dart';
-import 'package:instagram/features/auth/presentation/widget/textField.dart';
+import 'package:instagram/core/customized_button_widget.dart';
+import 'package:instagram/features/auth/presentation/widget/customized_textField.dart';
 import 'package:instagram/features/home/presentation/view/home_screen.dart';
 
 class LogIn extends StatefulWidget {
@@ -14,31 +15,9 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final auth = FirebaseAuth.instance;
-  Future<void> login(BuildContext context) async {
-    try {
-      final email = emailController.text.trim(); //trim-->to remove spaces
-      final password = passwordController.text.trim();
-      if (email.isEmpty || password.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Please enter email and password.")),
-        );
-        return;
-      }
 
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
 
-      // Navigate to the home screen
-      Navigator.pushReplacementNamed(context, HomeScreen.routname);
-    } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message ?? "Login failed")),
-      );
-    }
-  }
+  LoginData data = LoginData();
 
   @override
   Widget build(BuildContext context) {
@@ -65,21 +44,23 @@ class _LogInState extends State<LogIn> {
                 ),
                 Textfield(
                   text: "Email",
-                  controller: emailController,
+                  controller: data.emailController,
+                  isPassword: false,
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Textfield(
                   text: "Password",
-                  controller: passwordController,
+                  controller: data.passwordController,
+                  isPassword: true,
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Buttonwidget(
                   text: "Login",
-                  chick: ()=>login(context),
+                  chick: () => data.login(context),
                 ),
                 Center(
                   child: Row(

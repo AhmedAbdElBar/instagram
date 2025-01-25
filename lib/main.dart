@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:instagram/features/auth/presentation/view/Register.dart';
 import 'package:instagram/features/auth/presentation/view/log_in.dart';
 import 'package:instagram/features/home/presentation/view/home_screen.dart';
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         LogIn.routname: (context) => LogIn(),
         Register.routname: (context) => Register(),
-        HomeScreen.routname:(context)=> HomeScreen()
+        HomeScreen.routname: (context) => HomeScreen()
       },
       initialRoute: LogIn.routname,
     );

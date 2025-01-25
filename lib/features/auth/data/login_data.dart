@@ -5,7 +5,7 @@ import 'package:instagram/features/home/presentation/view/home_screen.dart';
 class LoginData{
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final auth = FirebaseAuth.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
   Future<void> login(BuildContext context) async {
     try {
       final email = emailController.text.trim(); //trim-->to remove spaces
@@ -17,7 +17,7 @@ class LoginData{
         return;
       }
 
-      UserCredential userCredential = await FirebaseAuth.instance
+      UserCredential userCredential = await auth
           .signInWithEmailAndPassword(email: email, password: password);
 
       // Navigate to the home screen

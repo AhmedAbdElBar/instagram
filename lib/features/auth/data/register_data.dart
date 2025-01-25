@@ -7,6 +7,8 @@ class RegisterData {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
+
 
   Future<void> signUp(BuildContext context) async {
     try {
@@ -28,7 +30,7 @@ class RegisterData {
         return;
       }
 
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );

@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:instagram/core/colors_thems.dart';
 import 'package:instagram/features/home/data/postes_data.dart';
 import 'package:instagram/features/home/data/storys_data.dart';
+<<<<<<< HEAD
+=======
+import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
+import 'package:instagram/core/storys_widget.dart';
+>>>>>>> fc7b9a2048f45adce46d48df3bb4210310619cf7
 
 class HomeScreen extends StatefulWidget {
   static const String routname = "homeScreen";

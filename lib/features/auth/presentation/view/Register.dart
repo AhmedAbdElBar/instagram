@@ -1,10 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/colors_thems.dart';
 import 'package:instagram/features/auth/data/register_data.dart';
 import 'package:instagram/core/customized_button_widget.dart';
 import 'package:instagram/features/auth/presentation/widget/customized_textField.dart';
-import 'package:instagram/features/home/presentation/view/home_screen.dart';
 
 class Register extends StatelessWidget {
   static const String routname = "Register";
@@ -32,6 +30,7 @@ class Register extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+                // Email Field
                 Textfield(
                   text: "Email",
                   controller: data.emailController,
@@ -40,6 +39,16 @@ class Register extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+                // Username Field
+                Textfield(
+                  text: "Username",
+                  controller: data.usernameController,
+                  isPassword: false,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                // Password Field
                 Textfield(
                   text: "Password",
                   controller: data.passwordController,
@@ -48,6 +57,7 @@ class Register extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+                // Confirm Password
                 Textfield(
                   text: "Confirm Password",
                   controller: data.confirmPasswordController,
@@ -56,7 +66,12 @@ class Register extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Buttonwidget(text: "Sign up", chick: () => data.signUp(context)),
+                Buttonwidget(
+                  text: "Sign up",
+                  chick: () => data.signUp(context),
+                  buttonColor: ThemingColor.blueButtonColor,
+                  fontColor: ThemingColor.whiteFont,
+                ),
               ],
             ),
           ),

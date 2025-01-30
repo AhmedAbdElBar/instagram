@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:instagram/core/colors_thems.dart';
 
 class CircleavatarWithBorder extends StatelessWidget {
-  late int chick = 1;
+  late int chick = 10;
   late String image;
   late double size;
-  CircleavatarWithBorder({required this.chick,required this.size, required this.image});
+  CircleavatarWithBorder(this.chick, { required this.size, required this.image});
   @override
   Widget build(BuildContext context) {
     return Container(

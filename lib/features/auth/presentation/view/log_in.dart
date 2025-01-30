@@ -61,6 +61,8 @@ class _LogInState extends State<LogIn> {
                 Buttonwidget(
                   text: "Login",
                   chick: () => data.login(context),
+                  buttonColor: ThemingColor.blueButtonColor,
+                  fontColor: ThemingColor.whiteFont,
                 ),
                 Center(
                   child: Row(

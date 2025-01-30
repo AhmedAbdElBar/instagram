@@ -3,8 +3,15 @@ import 'package:instagram/core/colors_thems.dart';
 
 class Buttonwidget extends StatelessWidget {
   late String text;
+  late Color buttonColor;
   final VoidCallback chick;
-  Buttonwidget({super.key, required this.text, required this.chick});
+  late Color fontColor;
+  Buttonwidget(
+      {super.key,
+      required this.text,
+      required this.chick,
+      required this.buttonColor,
+      required this.fontColor});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -13,13 +20,13 @@ class Buttonwidget extends StatelessWidget {
         padding: EdgeInsets.all(10),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: ThemingColor.blueFontColor,
-            borderRadius: BorderRadius.circular(10)),
+            color: buttonColor, borderRadius: BorderRadius.circular(10)),
         child: Text(
           text,
-          style: TextStyle(fontSize: 16, 
-          fontWeight: FontWeight.bold,
-          color: ThemingColor.whiteFont),
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color:fontColor),
         ),
       ),
     );

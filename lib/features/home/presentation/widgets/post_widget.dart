@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/circleAvatar_with_border.dart';
 import 'package:instagram/core/colors_thems.dart';
 import 'package:instagram/features/home/presentation/widgets/actions_for_posts.dart';
+import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
 
 class Post extends StatelessWidget {
   final String email;
@@ -16,6 +18,8 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: ThemingColor.lightGrayColor, width: 1),
@@ -32,8 +36,13 @@ class Post extends StatelessWidget {
                 child: Row(
                   children: [
                     InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, Profilepage.routname,
+                            arguments: ProfileInfo(
+                                email: email, profileImage: profileImage));
+                      },
                       child: CircleavatarWithBorder(
-                        chick: 10,
+                        5,
                         size: 20,
                         image: profileImage,
                       ),
@@ -67,17 +76,12 @@ class Post extends StatelessWidget {
               ),
             ],
           ),
-          // Post Image
-          Container(
-            width: double.infinity,
-            child: Image(
-              image: AssetImage(postImage),
-              fit: BoxFit.cover,
-            ),
+
+          //post image & Actions (Like - Comment - Bookmark)
+          ActionsForPosts(
+            postImage: postImage,
           ),
-          // Actions (Like, Comment, Bookmark)
-          ActionsForPosts(),
-          // Likes, Comments, and Description
+          // Description
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
@@ -91,7 +95,7 @@ class Post extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: "$email ",
+                        text: email,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
@@ -113,4 +117,10 @@ class Post extends StatelessWidget {
       ),
     );
   }
+}
+
+class ProfileInfo {
+  late String email;
+  late String profileImage;
+  ProfileInfo({required this.email, required this.profileImage});
 }

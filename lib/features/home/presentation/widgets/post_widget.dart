@@ -1,29 +1,24 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/core/circleAvatar_with_border.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/circle_avatar_with_border.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/home/presentation/widgets/actions_for_posts.dart';
 import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
 
 class Post extends StatelessWidget {
-  final String email;
+  final String username;
   final String profileImage;
   final String postImage;
 
   Post({
-    required this.email,
+    required this.username,
     required this.profileImage,
     required this.postImage,
   });
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: ThemingColor.lightGrayColor, width: 1),
-      ),
+      decoration: BoxDecoration(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,10 +34,11 @@ class Post extends StatelessWidget {
                       onTap: () {
                         Navigator.pushNamed(context, Profilepage.routname,
                             arguments: ProfileInfo(
-                                email: email, profileImage: profileImage));
+                                username: username,
+                                profileImage: profileImage));
                       },
                       child: CircleavatarWithBorder(
-                        5,
+                        1,
                         size: 20,
                         image: profileImage,
                       ),
@@ -52,7 +48,7 @@ class Post extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          email,
+                          username,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 13,
@@ -79,6 +75,7 @@ class Post extends StatelessWidget {
 
           //post image & Actions (Like - Comment - Bookmark)
           ActionsForPosts(
+            username: username,
             postImage: postImage,
           ),
           // Description
@@ -95,11 +92,11 @@ class Post extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: email,
+                        text: username,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
-                        text: 'Lorem ipsum dolor sit amet, consectetur...',
+                        text: ' Lorem ipsum dolor sit amet, consectetur...',
                       ),
                     ],
                   ),
@@ -107,7 +104,7 @@ class Post extends StatelessWidget {
                 Text(
                   "View all 16 comments",
                   style: TextStyle(
-                    color: ThemingColor.darkGrayColor,
+                    color: ThemingColor.blueFontColor,
                   ),
                 ),
               ],
@@ -120,7 +117,7 @@ class Post extends StatelessWidget {
 }
 
 class ProfileInfo {
-  late String email;
+  late String username;
   late String profileImage;
-  ProfileInfo({required this.email, required this.profileImage});
+  ProfileInfo({required this.username, required this.profileImage});
 }

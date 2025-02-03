@@ -1,15 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/core/circleAvatar_with_border.dart';
-import 'package:instagram/core/storys_widget.dart';
+import 'package:instagram/core/circle_avatar_with_border.dart';
 
 class ProfileImageAndFollowers extends StatelessWidget {
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  late String username ;
+  late String username;
   late String image;
 
-  ProfileImageAndFollowers({required this.image,required this.username});
+  ProfileImageAndFollowers({required this.image, required this.username});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,10 +16,13 @@ class ProfileImageAndFollowers extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          
           Container(
-            padding: EdgeInsets.only(left:10, right: 5),
-            child: CircleavatarWithBorder(5,image: image, size: 40,)),
+              padding: EdgeInsets.only(left: 10, right: 5),
+              child: CircleavatarWithBorder(
+                1,
+                image: image,
+                size: 40,
+              )),
           //Followers & Following & Posts
           Expanded(
             child: Row(

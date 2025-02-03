@@ -4,7 +4,9 @@ import 'package:share_plus/share_plus.dart';
 
 class FullScreenImageViewer extends StatefulWidget {
   final String image;
-  FullScreenImageViewer({Key? key, required this.image}) : super(key: key);
+  final String description;
+  FullScreenImageViewer(
+      {Key? key, required this.image, required this.description});
 
   @override
   State<FullScreenImageViewer> createState() => _FullScreenImageViewerState();
@@ -82,47 +84,62 @@ class _FullScreenImageViewerState extends State<FullScreenImageViewer> {
             bottom: 30,
             left: 20,
             right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Like Button
-                GestureDetector(
-                  onTap: toggleLove,
-                  child: Icon(
-                    isLoved ? Icons.favorite : Icons.favorite_border,
-                    size: 32,
-                    color: isLoved ? Colors.red : Colors.white,
-                  ),
+                Text(
+                  widget.description,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
                 ),
-
-                // Comment Button
-                GestureDetector(
-                  onTap: openCommentSection,
-                  child: const Icon(
-                    Icons.comment_outlined,
-                    size: 32,
-                    color: Colors.white,
-                  ),
+                SizedBox(
+                  height: 15,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // Like Button
+                    GestureDetector(
+                      onTap: toggleLove,
+                      child: Icon(
+                        isLoved ? Icons.favorite : Icons.favorite_border,
+                        size: 32,
+                        color: isLoved ? Colors.red : Colors.white,
+                      ),
+                    ),
 
-                // Share Button
-                GestureDetector(
-                  onTap: shareImage,
-                  child: const Icon(
-                    Icons.send,
-                    size: 32,
-                    color: Colors.white,
-                  ),
-                ),
+                    // Comment Button
+                    GestureDetector(
+                      onTap: openCommentSection,
+                      child: const Icon(
+                        Icons.comment_outlined,
+                        size: 32,
+                        color: Colors.white,
+                      ),
+                    ),
 
-                // Bookmark Button
-                GestureDetector(
-                  onTap: toggleBookmark,
-                  child: Icon(
-                    isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                    size: 32,
-                    color: isBookmarked ? Colors.yellow : Colors.white,
-                  ),
+                    // Share Button
+                    GestureDetector(
+                      onTap: shareImage,
+                      child: const Icon(
+                        Icons.send,
+                        size: 32,
+                        color: Colors.white,
+                      ),
+                    ),
+
+                    // Bookmark Button
+                    GestureDetector(
+                      onTap: toggleBookmark,
+                      child: Icon(
+                        isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                        size: 32,
+                        color: isBookmarked ? Colors.yellow : Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

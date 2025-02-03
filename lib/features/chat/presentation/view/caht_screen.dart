@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/chat/data/chat_data.dart';
 import 'package:instagram/features/chat/presentation/widgets/message_input.dart';
 import 'package:instagram/features/chat/presentation/widgets/message_widget.dart';
@@ -21,8 +21,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      backgroundColor: ThemingColor.maincolor,
       appBar: AppBar(
         actions: [
           IconButton(
@@ -32,7 +30,6 @@ class _ChatScreenState extends State<ChatScreen> {
             icon: Icon(Icons.logout_outlined),
           )
         ],
-        backgroundColor: ThemingColor.maincolor,
         title: Text("Chat"),
       ),
       body: Column(

@@ -1,13 +1,10 @@
-import 'dart:math';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/Explore_screen/presentation/view/exploreScreen.dart';
-import 'package:instagram/features/home/data/postes_data.dart';
-import 'package:instagram/features/home/data/storys_data.dart';
-import 'package:instagram/features/home/presentation/view/homePage.dart';
+import 'package:instagram/features/home/data/userdata.dart';
+import 'package:instagram/features/home/presentation/view/home_page.dart';
 import 'package:instagram/features/profile_page/presentation/view/myProfilePage.dart';
-import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
+import 'package:instagram/features/reels_screen/presentation/view/reelsScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routname = "homeScreen";
@@ -18,6 +15,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
+  final user = Userdata();
+
+  @override
+  void initState() {
+    user.fetchUser().then((_) {
+      setState(() {});
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,48 +37,69 @@ class _HomeScreenState extends State<HomeScreen> {
             currentIndex = value;
           });
         },
-        backgroundColor: ThemingColor.maincolor,
         items: [
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage("assets/icons/home.png"),
-                color: ThemingColor.iconsColors),
+            icon: ImageIcon(
+              const AssetImage("assets/icons/home.png"),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage("assets/icons/search.png"),
-                color: ThemingColor.iconsColors),
+            icon: ImageIcon(
+              const AssetImage("assets/icons/search.png"),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage("assets/icons/reels.png"),
-                color: ThemingColor.iconsColors),
+            icon: ImageIcon(
+              const AssetImage("assets/icons/reels.png"),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage("assets/icons/shopping.png"),
-                color: ThemingColor.iconsColors),
+            icon: ImageIcon(
+              const AssetImage("assets/icons/shopping.png"),
+            ),
             label: '',
           ),
+          // Profile Avatar Item
           BottomNavigationBarItem(
-            icon: CircleAvatar(
-              radius: 15,
-              backgroundImage: AssetImage("assets/posts/post (12).png"),
+            icon: FutureBuilder(
+              future: user.fetchUser(),
+              builder: (context, snapshot) {
+                // If data is still loading, show a default avatar
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircleAvatar(
+                    radius: 15,
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                // Once data is fetched, display the user's profile image
+                return CircleAvatar(
+                  radius: 15,
+                  backgroundImage: user.profileImage != null
+                      ? AssetImage("${user.profileImage}")
+                      : AssetImage("assets/posts/post (10).png"),
+                );
+              },
             ),
             label: '',
           ),
         ],
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
+        
       ),
     );
   }
 
+  // Function to return the respective screen based on index
   Widget onClick() {
     if (currentIndex == 0) {
       return Homepage();
     } else if (currentIndex == 1) {
       return ExploreScreen();
+    } else if (currentIndex == 2) {
+      return Reelsscreen();
     } else if (currentIndex == 4) {
       return Myprofilepage();
     } else {

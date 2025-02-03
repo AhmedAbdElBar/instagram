@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/core/customized_button_widget.dart';
-import 'package:instagram/features/profile_page/presentation/widgets/customizes_button_for_profile.dart';
+import 'package:instagram/features/settings/presentation/widgets/edit_profile.dart';
 
 class EditeAndOtherButtons extends StatefulWidget {
   const EditeAndOtherButtons({super.key});
@@ -20,12 +20,16 @@ class _EditeAndOtherButtonsState extends State<EditeAndOtherButtons> {
           Expanded(
             child: Buttonwidget(
               text: "Edit",
-              chick: () {},
+              chick: () {
+                Navigator.pushNamed(context, EditProfile.routname);
+              },
               buttonColor: ThemingColor.grayButtonColor,
               fontColor: ThemingColor.blackFont,
             ),
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           InkWell(
             onTap: () {},
             child: Container(
@@ -34,7 +38,7 @@ class _EditeAndOtherButtonsState extends State<EditeAndOtherButtons> {
               decoration: BoxDecoration(
                   color: ThemingColor.grayButtonColor,
                   borderRadius: BorderRadius.circular(10)),
-              child: Icon(Icons.person_add_outlined),
+              child: Icon(Icons.person_add_alt_outlined,color: Colors.black,),
             ),
           )
         ],

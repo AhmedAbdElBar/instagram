@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/core/circleAvatar_with_border.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/circle_avatar_with_border.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/full_screen_image_viewer.dart';
+
 
 class StorysWidget extends StatelessWidget {
   late String image;
-  late String email;
+  late String description;
+  late String username;
   late int index;
-  StorysWidget({required this.image, required this.email, required this.index});
+  StorysWidget({super.key, required this.image, required this.username, required this.index,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class StorysWidget extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => FullScreenImageViewer(image: image),
+              builder: (context) => FullScreenImageViewer(image: image, description: description,),
             ),
           );
         },
@@ -26,25 +28,12 @@ class StorysWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  CircleavatarWithBorder(
-                    index,
-                    image: image,
-                    size: 35,
-                  ),
-                  Container(
-                    child: index == 1
-                        ? Icon(
-                            Icons.add_circle,
-                            color: Color.fromRGBO(31, 161, 255, 1),
-                          )
-                        : SizedBox(),
-                  )
-                ],
+              CircleavatarWithBorder(
+                1,
+                image: image,
+                size: 35,
               ),
-              Text(email)
+              Text(username)
             ],
           ),
         ),

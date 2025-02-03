@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/core/customized_button_widget.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/customizes_button_for_profile.dart';
 
@@ -55,7 +55,7 @@ class _FollowAndOtherButtonsState extends State<FollowAndOtherButtons> {
                 height: 30,
                 width: 32,
                 alignment: Alignment.center,
-                child: Icon(Icons.person_add_outlined),
+                child: Icon(Icons.person_add_outlined, color: Colors.black),
               ),
             ],
           )

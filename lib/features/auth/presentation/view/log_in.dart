@@ -1,14 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/auth/data/login_data.dart';
 import 'package:instagram/features/auth/presentation/view/Register.dart';
 import 'package:instagram/core/customized_button_widget.dart';
 import 'package:instagram/features/auth/presentation/widget/customized_textField.dart';
-import 'package:instagram/features/home/presentation/view/home_screen.dart';
 
 class LogIn extends StatefulWidget {
   static const String routname = 'LogIn';
+
+  const LogIn({super.key});
 
   @override
   State<LogIn> createState() => _LogInState();

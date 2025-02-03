@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:instagram/core/colors_thems.dart';
-import 'package:instagram/features/favoritespage/data/favorites_data.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
+import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/full_screen_image_viewer.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:instagram/core/colors_thems.dart';
 
 class ActionsForPosts extends StatefulWidget {
   final String postImage;
-  ActionsForPosts({required this.postImage});
+  final String username;
+  ActionsForPosts({required this.postImage, required this.username});
 
   @override
   State<ActionsForPosts> createState() => _ActionsForPostsState();
@@ -28,7 +28,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
       if (isLoved) {
         FavoritesDataManager().addPost(
           Post(
-            email: "${auth.currentUser!.email}",
+            username: widget.username,
             profileImage: widget.postImage,
             postImage: widget.postImage,
           ),
@@ -36,7 +36,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
       } else {
         FavoritesDataManager().removePost(
           Post(
-            email: "${auth.currentUser!.email}",
+            username: widget.username,
             profileImage: widget.postImage,
             postImage: widget.postImage,
           ),
@@ -72,7 +72,6 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  // Add comment logic here
                   Navigator.pop(context);
                 },
                 child: Text('Post Comment'),
@@ -94,8 +93,10 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    FullScreenImageViewer(image: widget.postImage),
+                builder: (context) => FullScreenImageViewer(
+                  image: widget.postImage,
+                  description: "",
+                ),
               ),
             );
           },
@@ -107,6 +108,9 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
               fit: BoxFit.cover,
             ),
           ),
+        ),
+        SizedBox(
+          height: 10,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,7 +126,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
                     child: Icon(
                       isLoved ? Icons.favorite : Icons.favorite_border_outlined,
                       size: 30,
-                      color: isLoved ? Colors.red : ThemingColor.iconsColors,
+                      color: isLoved ? Colors.red : null,
                     ),
                   ),
 
@@ -144,7 +148,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
               child: Icon(
                 isBookmarked ? Icons.bookmark : Icons.bookmark_outline,
                 size: 30,
-                color: isBookmarked ? Colors.orange : ThemingColor.iconsColors,
+                color: isBookmarked ? Colors.orange : null,
               ),
             ),
           ],

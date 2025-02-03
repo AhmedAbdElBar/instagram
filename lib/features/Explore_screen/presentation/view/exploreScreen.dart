@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/Explore_screen/data/exploreServise.dart';
 import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
 import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
@@ -21,11 +21,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Explore"),
-        backgroundColor: ThemingColor.maincolor,
+        title: const Text("Explore"),
       ),
       body: Container(
-        color: ThemingColor.maincolor,
         child: Column(
           children: [
             // Search Bar
@@ -40,7 +38,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 },
                 decoration: InputDecoration(
                   hintText: "Search for users...",
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -50,7 +48,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
             // User List
             searchQuery.isEmpty
-                ? Center(child: Text("Please enter a search query"))
+                ? const Center(child: Text("Please enter a search query"))
                 : Expanded(
                     child: StreamBuilder<QuerySnapshot>(
                       stream: exploreService.searchUsers(searchQuery),
@@ -84,7 +82,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 Navigator.pushNamed(
                                     context, Profilepage.routname,
                                     arguments: ProfileInfo(
-                                        email: username,
+                                        username: username,
                                         profileImage: profileImage));
                               },
                             );

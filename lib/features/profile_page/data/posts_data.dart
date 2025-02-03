@@ -22,7 +22,7 @@ class PostsInProfile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FullScreenImageViewer(image: image),
+            builder: (context) => FullScreenImageViewer(image: image,description: "",),
           ),
         );
       },

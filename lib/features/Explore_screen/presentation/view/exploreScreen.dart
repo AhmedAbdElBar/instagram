@@ -21,7 +21,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Explore"),
+        title: const Text("Explore"),
         backgroundColor: ThemingColor.maincolor,
       ),
       body: Container(
@@ -40,7 +40,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 },
                 decoration: InputDecoration(
                   hintText: "Search for users...",
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -50,7 +50,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
             // User List
             searchQuery.isEmpty
-                ? Center(child: Text("Please enter a search query"))
+                ? const Center(child: Text("Please enter a search query"))
                 : Expanded(
                     child: StreamBuilder<QuerySnapshot>(
                       stream: exploreService.searchUsers(searchQuery),
@@ -84,7 +84,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 Navigator.pushNamed(
                                     context, Profilepage.routname,
                                     arguments: ProfileInfo(
-                                        email: username,
+                                        username: username,
                                         profileImage: profileImage));
                               },
                             );

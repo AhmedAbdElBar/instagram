@@ -2,15 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:instagram/core/colors_thems.dart';
-import 'package:instagram/features/favoritespage/data/favorites_data.dart';
+import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/full_screen_image_viewer.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:instagram/core/colors_thems.dart';
 
 class ActionsForPosts extends StatefulWidget {
   final String postImage;
-  ActionsForPosts({required this.postImage});
+  final String username;
+  ActionsForPosts({required this.postImage, required this.username});
 
   @override
   State<ActionsForPosts> createState() => _ActionsForPostsState();
@@ -28,7 +28,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
       if (isLoved) {
         FavoritesDataManager().addPost(
           Post(
-            email: "${auth.currentUser!.email}",
+            username: widget.username,
             profileImage: widget.postImage,
             postImage: widget.postImage,
           ),
@@ -36,7 +36,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
       } else {
         FavoritesDataManager().removePost(
           Post(
-            email: "${auth.currentUser!.email}",
+            username: widget.username,
             profileImage: widget.postImage,
             postImage: widget.postImage,
           ),
@@ -95,7 +95,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
               context,
               MaterialPageRoute(
                 builder: (context) =>
-                    FullScreenImageViewer(image: widget.postImage),
+                    FullScreenImageViewer(image: widget.postImage,description: "",),
               ),
             );
           },

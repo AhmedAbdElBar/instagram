@@ -3,12 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/colors_thems.dart';
 import 'package:instagram/features/home/data/storys_data.dart';
-import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
+import 'package:instagram/features/home/data/userdata.dart';
 import 'package:instagram/features/profile_page/data/posts_data.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/Edite_and_other_buttons.dart';
-import 'package:instagram/features/profile_page/presentation/widgets/Follow_and_other_buttons%20copy.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/customized_button_with_icon.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/profile_image_and_Followers.dart';
+import 'package:instagram/features/settings/presentation/view/setteng_screen.dart';
 
 class Myprofilepage extends StatefulWidget {
   static const String routname = "MyprofilePage";
@@ -20,32 +20,36 @@ class Myprofilepage extends StatefulWidget {
 class _ProfilepageState extends State<Myprofilepage> {
   FirebaseAuth auth = FirebaseAuth.instance;
   final story = StorysData();
+  final user = Userdata();
   var postsData = PostsData();
 
   @override
   void initState() {
     super.initState();
-    story.storymaker();
+    user.fetchUser().then((_) {
+      setState(() {});
+    });
+    fetchData();
     postsData.postGeneration();
+  }
+
+  void fetchData() async {
+    await story.fetchStories();
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
-      
     return Scaffold(
       backgroundColor: ThemingColor.maincolor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: ThemingColor.maincolor,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {},
-        ),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'username',
+              user.username ?? "Loading...",
               style: TextStyle(
                 color: Colors.black,
               ),
@@ -64,7 +68,9 @@ class _ProfilepageState extends State<Myprofilepage> {
               onPressed: () {},
               icon: ImageIcon(AssetImage("assets/icons/notifications.png"))),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, SettingScreen.routname);
+            },
             icon: ImageIcon(
               AssetImage("assets/icons/menu_dots.png"),
               size: 30,
@@ -78,7 +84,10 @@ class _ProfilepageState extends State<Myprofilepage> {
             child: Column(
               children: [
                 ///profile image and followers
-                ProfileImageAndFollowers(image: "assets/posts/post (16).png",username:'username',),
+                ProfileImageAndFollowers(
+                  image: user.profileImage ?? 'assets/posts/post (16).png',
+                  username: user.username ?? 'Loading...',
+                ),
 
                 ///discription.
                 Padding(
@@ -92,7 +101,7 @@ class _ProfilepageState extends State<Myprofilepage> {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt #hashtag",
+                        user.bio ?? "No bio available",
                       ),
                       Text(
                         "Link goes here",
@@ -130,19 +139,30 @@ class _ProfilepageState extends State<Myprofilepage> {
                       Container(
                         height: min(110, 200),
                         alignment: Alignment.center,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: story.storys.length - 1,
-                          itemBuilder: (context, index) {
-                            return story.storys[index + 1];
-                          },
-                        ),
+                        child: story.storys.isEmpty
+                            ? Center(
+                                child: Text("No stories available",
+                                    style: TextStyle(color: Colors.white)))
+                            : ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: story.storys.length,
+                                itemBuilder: (context, index) {
+                                  return story.storys[index];
+                                },
+                              ),
                       ),
+
                       Row(
                         children: [
-                          CustomizedButtonWithIcon(icon:ImageIcon(AssetImage("assets/icons/post_section.png"))),
-                          CustomizedButtonWithIcon(icon:ImageIcon(AssetImage("assets/icons/reels.png"))),
-                          CustomizedButtonWithIcon(icon:ImageIcon(AssetImage("assets/icons/frindes.png"))),
+                          CustomizedButtonWithIcon(
+                              icon: ImageIcon(
+                                  AssetImage("assets/icons/post_section.png"))),
+                          CustomizedButtonWithIcon(
+                              icon: ImageIcon(
+                                  AssetImage("assets/icons/reels.png"))),
+                          CustomizedButtonWithIcon(
+                              icon: ImageIcon(
+                                  AssetImage("assets/icons/frindes.png"))),
                         ],
                       ),
 
@@ -156,7 +176,7 @@ class _ProfilepageState extends State<Myprofilepage> {
                           crossAxisSpacing: 4,
                           mainAxisSpacing: 4,
                         ),
-                        itemCount: 15,
+                        itemCount: postsData.posts.length,
                         itemBuilder: (context, index) {
                           return postsData.posts[index];
                         },

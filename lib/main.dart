@@ -6,8 +6,11 @@ import 'package:instagram/features/auth/presentation/view/Register.dart';
 import 'package:instagram/features/auth/presentation/view/log_in.dart';
 import 'package:instagram/features/chat/presentation/view/caht_screen.dart';
 import 'package:instagram/features/home/presentation/view/home_screen.dart';
+import 'package:instagram/features/home/presentation/widgets/create_story.dart';
 import 'package:instagram/features/profile_page/presentation/view/myProfilePage.dart';
 import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
+import 'package:instagram/features/settings/presentation/view/setteng_screen.dart';
+import 'package:instagram/features/settings/presentation/widgets/edit_profile.dart';
 import 'package:instagram/firebase_options.dart';
 
 void main() async {
@@ -24,17 +27,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(backgroundColor: ThemingColor.maincolor)),
       color: ThemingColor.maincolor,
       routes: {
         LogIn.routname: (context) => LogIn(),
+        SettingScreen.routname: (context) => SettingScreen(),
+        EditProfile.routname: (context) => EditProfile(),
         Register.routname: (context) => Register(),
         ChatScreen.routname: (context) => ChatScreen(),
         HomeScreen.routname: (context) => HomeScreen(),
+        CreateStory.routname: (context) => CreateStory(),
         Profilepage.routname: (context) => Profilepage(),
         Myprofilepage.routname: (context) => Myprofilepage(),
         ExploreScreen.routeName: (context) => ExploreScreen(),
       },
-      initialRoute: LogIn.routname,
+      initialRoute: HomeScreen.routname,
     );
   }
 }

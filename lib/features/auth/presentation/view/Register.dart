@@ -20,14 +20,14 @@ class Register extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image(
+                const Image(
                   image: AssetImage(
                     "assets/images/image.png",
                   ),
                   width: 244,
                   height: 68,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // Email Field
@@ -36,7 +36,7 @@ class Register extends StatelessWidget {
                   controller: data.emailController,
                   isPassword: false,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // Username Field
@@ -45,7 +45,7 @@ class Register extends StatelessWidget {
                   controller: data.usernameController,
                   isPassword: false,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // Password Field
@@ -54,7 +54,7 @@ class Register extends StatelessWidget {
                   controller: data.passwordController,
                   isPassword: true,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 // Confirm Password
@@ -63,7 +63,7 @@ class Register extends StatelessWidget {
                   controller: data.confirmPasswordController,
                   isPassword: true,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Buttonwidget(

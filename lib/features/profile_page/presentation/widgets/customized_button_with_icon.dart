@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/core/colors_thems.dart';
 
 class CustomizedButtonWithIcon extends StatelessWidget {
   late Widget icon;

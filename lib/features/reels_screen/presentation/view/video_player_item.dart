@@ -50,6 +50,10 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
             IconButton(
               icon: Icon(
                 Icons.favorite_border,
+<<<<<<< HEAD
+=======
+                color: Colors.black,
+>>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
                 size: 30,
               ),
               onPressed: () {},
@@ -57,6 +61,10 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
             IconButton(
               icon: Icon(
                 Icons.comment,
+<<<<<<< HEAD
+=======
+                color: Colors.black,
+>>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
                 size: 30,
               ),
               onPressed: () {},
@@ -64,6 +72,10 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
             IconButton(
               icon: Icon(
                 Icons.send,
+<<<<<<< HEAD
+=======
+                color: Colors.black,
+>>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
                 size: 30,
               ),
               onPressed: () {},

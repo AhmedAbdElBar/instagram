@@ -25,7 +25,11 @@ class SettingsButtons extends StatelessWidget {
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+<<<<<<< HEAD
                   ),
+=======
+                  color: ThemingColor.blackFont),
+>>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
             ),
             icon
           ],

@@ -13,6 +13,10 @@ import firebase_storage
 import path_provider_foundation
 import share_plus
 import shared_preferences_foundation
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
 import video_player_avfoundation
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {

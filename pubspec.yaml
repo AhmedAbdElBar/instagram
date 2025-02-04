@@ -42,8 +42,15 @@ dependencies:
   cupertino_icons: ^1.0.8
   image_picker: ^1.1.2
   video_player: ^2.9.2
+<<<<<<< HEAD
   shared_preferences: ^2.5.1
 
+=======
+<<<<<<< HEAD
+  shared_preferences: ^2.5.1
+=======
+>>>>>>> a63bc30862c1f6006aac65589d97eb2131ebe175
+>>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
 
 dev_dependencies:
   flutter_test:

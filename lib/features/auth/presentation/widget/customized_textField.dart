@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/core/colors_thems.dart';
+import 'package:instagram/core/theme/colors_thems.dart';
 
 class Textfield extends StatelessWidget {
   late String text;

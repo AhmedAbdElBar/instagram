@@ -50,7 +50,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
             IconButton(
               icon: Icon(
                 Icons.favorite_border,
-                color: Colors.black,
                 size: 30,
               ),
               onPressed: () {},
@@ -58,7 +57,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
             IconButton(
               icon: Icon(
                 Icons.comment,
-                color: Colors.black,
                 size: 30,
               ),
               onPressed: () {},
@@ -66,7 +64,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
             IconButton(
               icon: Icon(
                 Icons.send,
-                color: Colors.black,
                 size: 30,
               ),
               onPressed: () {},

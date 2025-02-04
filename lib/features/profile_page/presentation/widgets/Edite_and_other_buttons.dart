@@ -24,7 +24,6 @@ class _EditeAndOtherButtonsState extends State<EditeAndOtherButtons> {
                 Navigator.pushNamed(context, EditProfile.routname);
               },
               buttonColor: ThemingColor.grayButtonColor,
-              fontColor: ThemingColor.blackFont,
             ),
           ),
           SizedBox(

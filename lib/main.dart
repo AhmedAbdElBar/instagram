@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         Myprofilepage.routname: (context) => Myprofilepage(),
         ExploreScreen.routeName: (context) => ExploreScreen(),
       },
-      initialRoute: HomeScreen.routname,
+      initialRoute: LogIn.routname,
     );
   }
 }

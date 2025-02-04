@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
+import 'package:instagram/core/theme/theme_provider.dart';
 import 'package:instagram/features/auth/data/register_data.dart';
 import 'package:instagram/core/customized_button_widget.dart';
 import 'package:instagram/features/auth/presentation/widget/customized_textField.dart';
@@ -9,20 +10,20 @@ class Register extends StatelessWidget {
   RegisterData data = RegisterData();
   @override
   Widget build(BuildContext context) {
+    final themeProvider = ThemeProvider.of(context);
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: ThemingColor.maincolor,
-        ),
-        backgroundColor: ThemingColor.maincolor,
+        appBar: AppBar(),
         body: Padding(
           padding: EdgeInsets.all(15),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Image(
-                  image: AssetImage(
-                    "assets/images/image.png",
+                Image(
+                  image:themeProvider.themeMode==ThemeMode.dark? AssetImage(
+                    "assets/images/instagram text logo2.png"
+                  ):AssetImage(
+                    "assets/images/instagram text logo1.png"
                   ),
                   width: 244,
                   height: 68,
@@ -70,7 +71,6 @@ class Register extends StatelessWidget {
                   text: "Sign up",
                   chick: () => data.signUp(context),
                   buttonColor: ThemingColor.blueButtonColor,
-                  fontColor: ThemingColor.whiteFont,
                 ),
               ],
             ),

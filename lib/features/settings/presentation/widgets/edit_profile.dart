@@ -2,10 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
-<<<<<<< HEAD
 import 'package:instagram/core/theme/theme_provider.dart';
-=======
->>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
+
 import 'package:instagram/features/home/data/userdata.dart';
 import 'package:instagram/features/settings/data/update_user_data.dart';
 import 'package:share_plus/share_plus.dart';
@@ -77,16 +75,10 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final themeProvider = ThemeProvider.of(context);
     return Scaffold(
       appBar: AppBar(
-=======
-    return Scaffold(
-      backgroundColor: ThemingColor.maincolor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
->>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
+
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Row(
@@ -98,17 +90,12 @@ class _EditProfileState extends State<EditProfile> {
               child: Text(
                 "Cancel",
                 style: TextStyle(
-<<<<<<< HEAD
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                     color: themeProvider.themeMode == ThemeMode.dark
                         ? Colors.grey
                         : Colors.black),
-=======
-                    color: ThemingColor.blackFont,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15),
->>>>>>> 1865bb0964837456e5808f3726541786ff46fd28
+
               ),
             ),
             Text(

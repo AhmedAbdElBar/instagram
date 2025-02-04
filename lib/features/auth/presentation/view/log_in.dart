@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
+import 'package:instagram/core/theme/theme_provider.dart';
 import 'package:instagram/features/auth/data/login_data.dart';
 import 'package:instagram/features/auth/presentation/view/Register.dart';
 import 'package:instagram/core/customized_button_widget.dart';
@@ -16,17 +17,13 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-
-
   LoginData data = LoginData();
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = ThemeProvider.of(context);
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: ThemingColor.maincolor,
-        ),
-        backgroundColor: ThemingColor.maincolor,
+        appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.all(15),
           child: Center(
@@ -34,9 +31,9 @@ class _LogInState extends State<LogIn> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image(
-                  image: AssetImage(
-                    "assets/images/image.png",
-                  ),
+                  image: themeProvider.themeMode == ThemeMode.dark
+                      ? AssetImage("assets/images/instagram text logo2.png")
+                      : AssetImage("assets/images/instagram text logo1.png"),
                   width: 244,
                   height: 68,
                 ),
@@ -63,7 +60,6 @@ class _LogInState extends State<LogIn> {
                   text: "Login",
                   chick: () => data.login(context),
                   buttonColor: ThemingColor.blueButtonColor,
-                  fontColor: ThemingColor.whiteFont,
                 ),
                 Center(
                   child: Row(
@@ -81,9 +77,10 @@ class _LogInState extends State<LogIn> {
                         child: Text(
                           "Register",
                           style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: ThemingColor.blueFontColor
+                          ),
                         ),
                       )
                     ],

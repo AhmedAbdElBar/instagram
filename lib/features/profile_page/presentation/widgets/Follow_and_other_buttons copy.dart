@@ -28,13 +28,11 @@ class _FollowAndOtherButtonsState extends State<FollowAndOtherButtons> {
                   text: "Following",
                   chick: FollowCange,
                   buttonColor: ThemingColor.grayButtonColor,
-                  fontColor: ThemingColor.blackFont,
                 )
               : Buttonwidget(
                   text: "Follow",
                   chick: FollowCange,
                   buttonColor: ThemingColor.blueButtonColor,
-                  fontColor: ThemingColor.whiteFont,
                 ),
           SizedBox(
             height: 5,

@@ -45,6 +45,7 @@ class _ProfilepageState extends State<Profilepage> {
             Text(
               arg!.username,
               style: TextStyle(),
+
             ),
             SizedBox(width: 5),
             Icon(
@@ -142,6 +143,7 @@ class _ProfilepageState extends State<Profilepage> {
                           : Center(
                               child: Text(
                                 "No stories found",
+
                               ),
                             ),
                     ),

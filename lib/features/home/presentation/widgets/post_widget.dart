@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/circle_avatar_with_border.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
+
 import 'package:instagram/features/home/presentation/widgets/actions_for_posts.dart';
 import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
 

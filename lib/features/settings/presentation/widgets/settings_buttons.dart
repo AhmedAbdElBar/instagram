@@ -5,6 +5,7 @@ class SettingsButtons extends StatelessWidget {
   late String text;
   late Icon icon;
   late Function function;
+
   SettingsButtons(
       {required this.text, required this.icon, required this.function});
 
@@ -14,7 +15,7 @@ class SettingsButtons extends StatelessWidget {
       onTap: () => function(),
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: ThemingColor.darkGrayColor, width: 1)),
+            border: Border.all(color: ThemingColor.lightGrayColor, width: 1)),
         padding: EdgeInsets.all(15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,9 +23,9 @@ class SettingsButtons extends StatelessWidget {
             Text(
               text,
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: ThemingColor.blackFont),
             ),
             icon
           ],

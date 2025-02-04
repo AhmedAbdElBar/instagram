@@ -74,7 +74,9 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemingColor.maincolor,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Row(
@@ -86,6 +88,7 @@ class _EditProfileState extends State<EditProfile> {
               child: Text(
                 "Cancel",
                 style: TextStyle(
+                    color: ThemingColor.blackFont,
                     fontWeight: FontWeight.bold,
                     fontSize: 15),
               ),

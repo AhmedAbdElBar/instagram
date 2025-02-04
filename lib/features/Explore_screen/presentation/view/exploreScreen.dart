@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/Explore_screen/data/exploreServise.dart';
 import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
 import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
@@ -22,6 +21,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Explore"),
+
       ),
       body: Container(
         child: Column(

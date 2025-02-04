@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/home/data/storys_data.dart';
 import 'package:instagram/features/home/data/userdata.dart';
 import 'package:instagram/features/profile_page/data/posts_data.dart';
@@ -43,11 +42,13 @@ class _ProfilepageState extends State<Myprofilepage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+
         elevation: 0,
         title: Row(
           children: [
             Text(
               user.username ?? "Loading...",
+
             ),
             SizedBox(width: 5),
             Icon(
@@ -137,6 +138,7 @@ class _ProfilepageState extends State<Myprofilepage> {
                                 child: Text(
                                 "No stories available",
                               ))
+
                             : ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: story.storys.length,

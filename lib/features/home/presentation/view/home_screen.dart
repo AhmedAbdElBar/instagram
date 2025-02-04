@@ -19,10 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    super.initState();
     user.fetchUser().then((_) {
       setState(() {});
     });
-    super.initState();
   }
 
   @override
@@ -87,7 +87,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         type: BottomNavigationBarType.fixed,
-        
       ),
     );
   }

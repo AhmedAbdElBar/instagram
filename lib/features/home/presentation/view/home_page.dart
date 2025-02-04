@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram/core/circle_avatar_with_border.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/core/theme/theme_provider.dart';
+
 import 'package:instagram/features/chat/presentation/view/caht_screen.dart';
 import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:instagram/features/favorites_page/presentation/view/favoritesPage.dart';

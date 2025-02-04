@@ -8,6 +8,7 @@ class CircleavatarWithBorder extends StatelessWidget {
   late double size;
   CircleavatarWithBorder(this.withBorder,
       {super.key, required this.size, required this.image});
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = ThemeProvider.of(context);
@@ -29,6 +30,7 @@ class CircleavatarWithBorder extends StatelessWidget {
       ),
       child: Container(
         padding: const EdgeInsets.all(2),
+
         decoration: BoxDecoration(
             color: themeProvider.themeMode == ThemeMode.dark
                 ? ThemingColor.blackFont

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
+
 import 'package:instagram/features/reels_screen/presentation/view/video_player_item.dart';
 import 'package:video_player/video_player.dart';
 
@@ -20,6 +21,7 @@ class _ReelsscreenState extends State<Reelsscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         title: Text("Reels"),
       ),
       body: PageView.builder(

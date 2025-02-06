@@ -19,18 +19,18 @@ class CircleavatarWithBorder extends StatelessWidget {
         gradient: withBorder == 1
             ? const LinearGradient(
                 colors: [
-                  Color(0xFFF58529),
-                  Color(0xFFDD2A7B),
+                  Color(0xFFFECD00),
+                  Color(0xFFF9373F),
+                  Color(0xFFC913B9),
                 ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
               )
             : null,
         shape: BoxShape.circle,
       ),
       child: Container(
-        padding: const EdgeInsets.all(2),
-
+        padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
             color: themeProvider.themeMode == ThemeMode.dark
                 ? ThemingColor.blackFont

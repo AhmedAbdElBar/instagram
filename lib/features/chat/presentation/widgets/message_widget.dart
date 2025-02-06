@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
+import 'package:instagram/core/theme/theme_provider.dart';
 
 class MessageWidget extends StatelessWidget {
   final String message;
@@ -15,19 +16,27 @@ class MessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = ThemeProvider.of(context);
     return Align(
       alignment: isCurrentUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         decoration: BoxDecoration(
-          color:
-              isCurrentUser ? ThemingColor.blueButtonColor : Colors.grey[300],
-          borderRadius: isCurrentUser? BorderRadius.only(bottomLeft: Radius.circular(10),topLeft: Radius.circular(10),topRight: Radius.circular(10)):BorderRadius.only(
-                    bottomRight: Radius.circular(10),
+            color: isCurrentUser
+                ? themeProvider.themeMode == ThemeMode.dark
+                    ? ThemingColor.darkGrayColor
+                    : ThemingColor.blueButtonColor
+                : Colors.grey[300],
+            borderRadius: isCurrentUser
+                ? BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10))
-        ),
+                : BorderRadius.only(
+                    bottomRight: Radius.circular(10),
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10))),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,7 +45,9 @@ class MessageWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
-                color: isCurrentUser?ThemingColor.whiteFont:ThemingColor.blackFont,
+                color: isCurrentUser
+                    ? ThemingColor.whiteFont
+                    : ThemingColor.blackFont,
               ),
             ),
             SizedBox(height: 4),

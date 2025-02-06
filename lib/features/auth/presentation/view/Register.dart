@@ -19,14 +19,15 @@ class Register extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image(
-                  image:themeProvider.themeMode==ThemeMode.dark? AssetImage(
-                    "assets/images/instagram text logo2.png"
-                  ):AssetImage(
-                    "assets/images/instagram text logo1.png"
-                  ),
+                Container(
                   width: 244,
                   height: 68,
+                  child: Image(
+                    image: themeProvider.themeMode == ThemeMode.dark
+                        ? AssetImage("assets/images/image2.png")
+                        : AssetImage("assets/images/image1.png"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 const SizedBox(
                   height: 20,

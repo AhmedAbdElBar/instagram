@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
+import 'package:instagram/core/theme/theme_provider.dart';
 
 class CustomizedButton extends StatelessWidget {
   late String title;
-  late Color fontColor;
-  CustomizedButton({required this.title, required this.fontColor});
+  CustomizedButton({required this.title});
   @override
   Widget build(BuildContext context) {
+    final themeProvider=ThemeProvider.of(context);
     return InkWell(
       child: Container(
                 decoration: BoxDecoration(
-                  color: ThemingColor.grayButtonColor,
+                  color: themeProvider.themeMode == ThemeMode.dark
+                  ? ThemingColor.darkGrayColor
+                  : ThemingColor.grayButtonColor,
                   borderRadius: BorderRadius.circular(5)
                 ),
                 height: 30,
@@ -18,7 +21,6 @@ class CustomizedButton extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(title,
                     style: TextStyle(
-                        color: fontColor,
                         fontWeight: FontWeight.bold)),
               ),
     );

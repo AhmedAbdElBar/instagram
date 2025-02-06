@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
+import 'package:instagram/core/theme/theme_provider.dart';
 import 'package:instagram/features/chat/data/chat_data.dart';
 
 class MessageInput extends StatelessWidget {
@@ -7,14 +8,20 @@ class MessageInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = ThemeProvider.of(context);
     final TextEditingController messageController = TextEditingController();
     final ChatService chatService = ChatService();
 
     return Container(
+      padding: EdgeInsets.only(left: 10),
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: ThemingColor.blueButtonColor, width: 2),
+        border: Border.all(
+            color: themeProvider.themeMode == ThemeMode.dark
+                ? ThemingColor.grayButtonColor
+                : ThemingColor.darkGrayColor,
+            width: 2),
       ),
       child: Row(
         children: [

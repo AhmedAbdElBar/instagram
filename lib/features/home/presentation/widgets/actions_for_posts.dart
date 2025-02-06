@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:instagram/core/theme/colors_thems.dart';
 
 import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
@@ -20,12 +17,12 @@ class ActionsForPosts extends StatefulWidget {
 class _ActionsForPostsState extends State<ActionsForPosts> {
   bool isLoved = false;
   bool isBookmarked = false;
-  final auth = FirebaseAuth.instance;
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  bool showLoved = false;
 
   void toggleLove() {
     setState(() {
       isLoved = !isLoved;
+      showLoved = true;
       if (isLoved) {
         FavoritesDataManager().addPost(
           Post(
@@ -42,6 +39,13 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
             postImage: widget.postImage,
           ),
         );
+      }
+    });
+    Future.delayed(Duration(seconds: 1), () {
+      if (mounted) {
+        setState(() {
+          showLoved = false;
+        });
       }
     });
   }
@@ -89,31 +93,43 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
     return Column(
       children: [
         // Post Image
-        InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => FullScreenImageViewer(
-                  image: widget.postImage,
-                  description: "",
+        Stack(alignment: Alignment.center, children: [
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FullScreenImageViewer(
+                    image: widget.postImage,
+                    description: "",
+                  ),
                 ),
-
+              );
+            },
+            onDoubleTap: toggleLove, // Double-tap to like
+            child: Container(
+              width: double.infinity,
+              child: Image(
+                image: AssetImage(widget.postImage),
+                fit: BoxFit.cover,
               ),
-            );
-          },
-          onDoubleTap: toggleLove, // Double-tap to like
-          child: Container(
-            width: double.infinity,
-            child: Image(
-              image: AssetImage(widget.postImage),
-              fit: BoxFit.cover,
             ),
           ),
-        ),
+          if (showLoved)
+            Center(
+              child: Container(
+                child: Icon(
+                  isLoved ? Icons.favorite : null,
+                  size: 80,
+                  color: const Color.fromARGB(189, 255, 255, 255),
+                ),
+              ),
+            ),
+        ]),
         SizedBox(
           height: 10,
         ),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

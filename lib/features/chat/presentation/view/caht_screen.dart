@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/chat/data/chat_data.dart';
 import 'package:instagram/features/chat/presentation/widgets/message_input.dart';
 import 'package:instagram/features/chat/presentation/widgets/message_widget.dart';
 import 'package:instagram/features/home/presentation/view/home_screen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ChatScreen extends StatefulWidget {
   static const String routname = "chat_screen";
 
@@ -30,7 +29,7 @@ class _ChatScreenState extends State<ChatScreen> {
             icon: Icon(Icons.logout_outlined),
           )
         ],
-        title: Text("Chat"),
+        title: Text(AppLocalizations.of(context)!.chat),
       ),
       body: Column(
         children: [
@@ -45,7 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   return Center(child: CircularProgressIndicator());
                 }
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return Center(child: Text("No messages yet"));
+                  return Center(child: Text(AppLocalizations.of(context)!.noMessagesyet));
                 }
 
                 final messages = snapshot.data!.docs.reversed.toList();

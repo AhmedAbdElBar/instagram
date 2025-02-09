@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
-import 'package:instagram/core/theme/theme_provider.dart';
+import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/auth/data/login_data.dart';
 import 'package:instagram/features/auth/presentation/view/Register.dart';
 import 'package:instagram/core/customized_button_widget.dart';
 import 'package:instagram/features/auth/presentation/widget/customized_textField.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class LogIn extends StatefulWidget {
   static const String routname = 'LogIn';
-
-  const LogIn({super.key});
 
   @override
   State<LogIn> createState() => _LogInState();
@@ -43,7 +41,7 @@ class _LogInState extends State<LogIn> {
                 height: 20,
               ),
               Textfield(
-                text: "Email",
+                text: AppLocalizations.of(context)!.email,
                 controller: data.emailController,
                 isPassword: false,
               ),
@@ -51,7 +49,7 @@ class _LogInState extends State<LogIn> {
                 height: 20,
               ),
               Textfield(
-                text: "Password",
+                text: AppLocalizations.of(context)!.password,
                 controller: data.passwordController,
                 isPassword: true,
               ),
@@ -59,7 +57,7 @@ class _LogInState extends State<LogIn> {
                 height: 20,
               ),
               Buttonwidget(
-                text: "Login",
+                text: AppLocalizations.of(context)!.login,
                 chick: () => data.login(context),
                 buttonColor: ThemingColor.blueButtonColor,
               ),
@@ -69,7 +67,7 @@ class _LogInState extends State<LogIn> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Do not have an account? ",
+                      AppLocalizations.of(context)!.dontHaveAccount,
                       style:
                           TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
                     ),
@@ -78,7 +76,7 @@ class _LogInState extends State<LogIn> {
                         Navigator.pushNamed(context, Register.routname);
                       },
                       child: Text(
-                        "Register",
+                        AppLocalizations.of(context)!.register,
                         style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,

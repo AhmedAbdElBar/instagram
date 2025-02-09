@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FullScreenImageViewer extends StatefulWidget {
   final String image;
@@ -42,7 +43,7 @@ class _FullScreenImageViewerState extends State<FullScreenImageViewer> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Add a comment...',
+                  labelText: AppLocalizations.of(context)!.postComment,
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -52,7 +53,7 @@ class _FullScreenImageViewerState extends State<FullScreenImageViewer> {
                   // Add comment logic here
                   Navigator.pop(context);
                 },
-                child: Text('Post Comment'),
+                child: Text(AppLocalizations.of(context)!.postComment),
               ),
             ],
           ),

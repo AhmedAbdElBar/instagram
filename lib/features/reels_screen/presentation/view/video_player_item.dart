@@ -1,12 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VideoPlayerItem extends StatefulWidget {
-  final String videoPath; // Renamed for clarity
+  final String videoPath; 
   VideoPlayerItem({required this.videoPath});
 
   @override
@@ -55,7 +53,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Add a comment...',
+                  labelText: AppLocalizations.of(context)!.postComment,
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -64,7 +62,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Post Comment'),
+                child: Text(AppLocalizations.of(context)!.postComment),
               ),
             ],
           ),

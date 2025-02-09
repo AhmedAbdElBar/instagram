@@ -8,6 +8,7 @@ import 'package:instagram/features/profile_page/presentation/widgets/Edite_and_o
 import 'package:instagram/features/profile_page/presentation/widgets/customized_button_with_icon.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/profile_image_and_Followers.dart';
 import 'package:instagram/features/settings/presentation/view/setteng_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Myprofilepage extends StatefulWidget {
   static const String routname = "MyprofilePage";
@@ -47,7 +48,7 @@ class _ProfilepageState extends State<Myprofilepage> {
         title: Row(
           children: [
             Text(
-              user.username ?? "Loading...",
+              user.username ?? AppLocalizations.of(context)!.loading,
 
             ),
             SizedBox(width: 5),
@@ -82,7 +83,7 @@ class _ProfilepageState extends State<Myprofilepage> {
                 ///profile image and followers
                 ProfileImageAndFollowers(
                   image: user.profileImage ?? 'assets/posts/post (16).png',
-                  username: user.username ?? 'Loading...',
+                  username: user.username ?? AppLocalizations.of(context)!.loading,
                 ),
 
                 ///discription.
@@ -118,7 +119,7 @@ class _ProfilepageState extends State<Myprofilepage> {
                                 ),
                                 TextSpan(text: " and "),
                                 TextSpan(
-                                  text: "100 others",
+                                  text: AppLocalizations.of(context)!.a100likes,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 )
                               ]),
@@ -136,7 +137,7 @@ class _ProfilepageState extends State<Myprofilepage> {
                         child: story.storys.isEmpty
                             ? Center(
                                 child: Text(
-                                "No stories available",
+                                AppLocalizations.of(context)!.noStorys,
                               ))
 
                             : ListView.builder(

@@ -8,6 +8,7 @@ import 'package:instagram/features/profile_page/data/posts_data.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/Follow_and_other_buttons%20copy.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/customized_button_with_icon.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/profile_image_and_Followers.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Profilepage extends StatefulWidget {
   static const String routname = "ProfilePage";

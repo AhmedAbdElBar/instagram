@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/features/Explore_screen/presentation/view/exploreScreen.dart';
 import 'package:instagram/features/home/data/userdata.dart';
 import 'package:instagram/features/home/presentation/view/home_page.dart';
@@ -8,6 +7,7 @@ import 'package:instagram/features/reels_screen/presentation/view/reelsScreen.da
 
 class HomeScreen extends StatefulWidget {
   static const String routname = "homeScreen";
+
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ThemingColor.maincolor,
       body: onClick(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
@@ -39,42 +38,31 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              const AssetImage("assets/icons/home.png"),
-            ),
+            icon: ImageIcon(AssetImage("assets/icons/home.png")),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              const AssetImage("assets/icons/search.png"),
-            ),
+            icon: ImageIcon(AssetImage("assets/icons/search.png")),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              const AssetImage("assets/icons/reels.png"),
-            ),
+            icon: ImageIcon(AssetImage("assets/icons/reels.png")),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              const AssetImage("assets/icons/shopping.png"),
-            ),
+            icon: ImageIcon(AssetImage("assets/icons/shopping.png")),
             label: '',
           ),
-          // Profile Avatar Item
           BottomNavigationBarItem(
             icon: FutureBuilder(
               future: user.fetchUser(),
               builder: (context, snapshot) {
-                // If data is still loading, show a default avatar
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return CircleAvatar(
                     radius: 15,
                     child: CircularProgressIndicator(),
                   );
                 }
-                // Once data is fetched, display the user's profile image
                 return CircleAvatar(
                   radius: 15,
                   backgroundImage: user.profileImage != null
@@ -91,7 +79,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Function to return the respective screen based on index
   Widget onClick() {
     if (currentIndex == 0) {
       return Homepage();

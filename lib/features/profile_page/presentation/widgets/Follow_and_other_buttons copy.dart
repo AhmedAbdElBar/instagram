@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/core/customized_button_widget.dart';
-import 'package:instagram/core/theme/theme_provider.dart';
+import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/customizes_button_for_profile.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FollowAndOtherButtons extends StatefulWidget {
   const FollowAndOtherButtons({super.key});
@@ -27,12 +28,12 @@ class _FollowAndOtherButtonsState extends State<FollowAndOtherButtons> {
         children: [
           isFollowed
               ? Buttonwidget(
-                  text: "Following",
+                  text: AppLocalizations.of(context)!.following,
                   chick: FollowCange,
                   buttonColor: ThemingColor.grayButtonColor,
                 )
               : Buttonwidget(
-                  text: "Follow",
+                  text: AppLocalizations.of(context)!.follow,
                   chick: FollowCange,
                   buttonColor: ThemingColor.blueButtonColor,
                 ),
@@ -43,13 +44,13 @@ class _FollowAndOtherButtonsState extends State<FollowAndOtherButtons> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomizedButton(
-                title: "Messeage",
+                title: AppLocalizations.of(context)!.message,
               ),
               CustomizedButton(
-                title: "Supscripe",
+                title: AppLocalizations.of(context)!.subscribe,
               ),
               CustomizedButton(
-                title: "Contact",
+                title: AppLocalizations.of(context)!.contact,
               ),
               Container(
                 decoration: BoxDecoration(

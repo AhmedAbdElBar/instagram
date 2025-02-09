@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
-import 'package:instagram/core/theme/theme_provider.dart';
+import 'package:instagram/core/provider/theme_provider.dart';
 
 class CircleavatarWithBorder extends StatelessWidget {
   late String image;

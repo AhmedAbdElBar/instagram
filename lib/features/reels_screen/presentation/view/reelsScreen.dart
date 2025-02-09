@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/core/theme/colors_thems.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:instagram/features/reels_screen/presentation/view/video_player_item.dart';
-import 'package:video_player/video_player.dart';
 
 class Reelsscreen extends StatefulWidget {
   const Reelsscreen({super.key});
@@ -22,7 +20,7 @@ class _ReelsscreenState extends State<Reelsscreen> {
     return Scaffold(
       appBar: AppBar(
 
-        title: Text("Reels"),
+        title: Text(AppLocalizations.of(context)!.reels),
       ),
       body: PageView.builder(
         scrollDirection: Axis.vertical,

@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:instagram/features/Explore_screen/data/exploreServise.dart';
 import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
 import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ExploreScreen extends StatefulWidget {
   static const String routeName = "explore_screen";
@@ -20,7 +21,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Explore"),
+        title:  Text(AppLocalizations.of(context)!.explore),
 
       ),
       body: Container(
@@ -37,7 +38,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   });
                 },
                 decoration: InputDecoration(
-                  hintText: "Search for users...",
+                  hintText: AppLocalizations.of(context)!.searchForUsers,
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -48,7 +49,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
             // User List
             searchQuery.isEmpty
-                ? const Center(child: Text("Please enter a search query"))
+                ?  Center(child: Text(AppLocalizations.of(context)!.pleaseEnterAUsername))
                 : Expanded(
                     child: StreamBuilder<QuerySnapshot>(
                       stream: exploreService.searchUsers(searchQuery),
@@ -58,7 +59,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           return Center(child: CircularProgressIndicator());
                         }
                         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                          return Center(child: Text("No users found"));
+                          return Center(child: Text(AppLocalizations.of(context)!.noUsersFound));
                         }
 
                         final users = snapshot.data!.docs;

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/core/customized_button_widget.dart';
-import 'package:instagram/core/theme/theme_provider.dart';
+import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/settings/presentation/widgets/edit_profile.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditeAndOtherButtons extends StatefulWidget {
   const EditeAndOtherButtons({super.key});
@@ -21,7 +22,7 @@ class _EditeAndOtherButtonsState extends State<EditeAndOtherButtons> {
         children: [
           Expanded(
             child: Buttonwidget(
-              text: "Edit",
+              text:AppLocalizations.of(context)!.edit,
               chick: () {
                 Navigator.pushNamed(context, EditProfile.routname);
               },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavoritesPage extends StatefulWidget {
   final List<Widget> lovedPosts; // Receive list of favorite posts
@@ -14,7 +15,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Favorites"),
+        title:  Text(AppLocalizations.of(context)!.favorites),
       ),
       body: widget.lovedPosts.isNotEmpty
           ? ListView.builder(
@@ -28,7 +29,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
             )
           : Center(
               child: Text(
-                "No loved posts yet!",
+                AppLocalizations.of(context)!.noLovedPostsYet,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),

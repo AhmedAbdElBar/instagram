@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/circle_avatar_with_border.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
-import 'package:instagram/core/theme/theme_provider.dart';
-
+import 'package:instagram/core/provider/theme_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:instagram/features/chat/presentation/view/caht_screen.dart';
 import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:instagram/features/favorites_page/presentation/view/favoritesPage.dart';
@@ -124,8 +124,7 @@ class _HomepageState extends State<Homepage> {
                             ],
                           ),
                           Text(
-                            user.username ?? "User",
-                            style: TextStyle(color: ThemingColor.blackFont),
+                            AppLocalizations.of(context)!.yourStory,
                           ),
                         ],
                       ),
@@ -141,7 +140,7 @@ class _HomepageState extends State<Homepage> {
                             )
                           : Center(
                               child: Text(
-                                "no stories available !",
+                                AppLocalizations.of(context)!.noStorys,
                                 style: TextStyle(color: ThemingColor.blackFont),
                               ),
                             ),
@@ -158,7 +157,7 @@ class _HomepageState extends State<Homepage> {
                   }
                   if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                     return Center(
-                        child: Text("No posts available!",
+                        child: Text(AppLocalizations.of(context)!.noPosts,
                             style: TextStyle(color: Colors.white)));
                   }
 

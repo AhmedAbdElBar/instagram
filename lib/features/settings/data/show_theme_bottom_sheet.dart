@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void showThemeBottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -6,19 +7,19 @@ void showThemeBottomSheet(BuildContext context) {
     builder: (BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Theme Settings"),
+          title: Text(AppLocalizations.of(context)!.themeSettings),
         ),
         body: Center(
           child: Column(
             children: [
               ListTile(
-                title: Text("Light Theme"),
+                title: Text(AppLocalizations.of(context)!.lightTheme),
                 onTap: () {
                   // Handle theme selection here
                 },
               ),
               ListTile(
-                title: Text("Dark Theme"),
+                title: Text(AppLocalizations.of(context)!.darkTheme),
                 onTap: () {
                   // Handle theme selection here
                 },

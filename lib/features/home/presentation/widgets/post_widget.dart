@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/circle_avatar_with_border.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:instagram/features/home/presentation/widgets/actions_for_posts.dart';
 import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
 
@@ -56,7 +56,7 @@ class Post extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Sponsored",
+                          AppLocalizations.of(context)!.sponsored,
                           style: TextStyle(fontSize: 12),
                         ),
                       ],
@@ -86,7 +86,7 @@ class Post extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "100 likes",
+                  AppLocalizations.of(context)!.a100likes,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text.rich(
@@ -97,13 +97,13 @@ class Post extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
-                        text: ' Lorem ipsum dolor sit amet, consectetur...',
+                        text: AppLocalizations.of(context)!.loremIpsum,
                       ),
                     ],
                   ),
                 ),
                 Text(
-                  "View all 16 comments",
+                  AppLocalizations.of(context)!.viewAllComments,
                   style: TextStyle(
                     color: ThemingColor.blueFontColor,
                   ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
-import 'package:instagram/core/theme/theme_provider.dart';
+import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/auth/data/register_data.dart';
 import 'package:instagram/core/customized_button_widget.dart';
 import 'package:instagram/features/auth/presentation/widget/customized_textField.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Register extends StatelessWidget {
   static const String routname = "Register";
   RegisterData data = RegisterData();
@@ -34,7 +34,7 @@ class Register extends StatelessWidget {
                 ),
                 // Email Field
                 Textfield(
-                  text: "Email",
+                  text: AppLocalizations.of(context)!.email,
                   controller: data.emailController,
                   isPassword: false,
                 ),
@@ -43,7 +43,7 @@ class Register extends StatelessWidget {
                 ),
                 // Username Field
                 Textfield(
-                  text: "Username",
+                  text: AppLocalizations.of(context)!.username,
                   controller: data.usernameController,
                   isPassword: false,
                 ),
@@ -52,7 +52,7 @@ class Register extends StatelessWidget {
                 ),
                 // Password Field
                 Textfield(
-                  text: "Password",
+                  text: AppLocalizations.of(context)!.password,
                   controller: data.passwordController,
                   isPassword: true,
                 ),
@@ -61,7 +61,7 @@ class Register extends StatelessWidget {
                 ),
                 // Confirm Password
                 Textfield(
-                  text: "Confirm Password",
+                  text: AppLocalizations.of(context)!.confirmPassword,
                   controller: data.confirmPasswordController,
                   isPassword: true,
                 ),
@@ -69,7 +69,7 @@ class Register extends StatelessWidget {
                   height: 20,
                 ),
                 Buttonwidget(
-                  text: "Sign up",
+                  text: AppLocalizations.of(context)!.signup,
                   chick: () => data.signUp(context),
                   buttonColor: ThemingColor.blueButtonColor,
                 ),

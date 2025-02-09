@@ -2,11 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
-import 'package:instagram/core/theme/theme_provider.dart';
-
+import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/home/data/userdata.dart';
 import 'package:instagram/features/settings/data/update_user_data.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class EditProfile extends StatefulWidget {
   static const String routname = "editProfile";
@@ -67,7 +68,7 @@ class _EditProfileState extends State<EditProfile> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Profile updated successfully!"),
+        content: Text(AppLocalizations.of(context)!.profileUpdatedSuccessfully),
         backgroundColor: Colors.green,
       ),
     );
@@ -88,7 +89,7 @@ class _EditProfileState extends State<EditProfile> {
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text(
-                "Cancel",
+                AppLocalizations.of(context)!.cancel,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -99,7 +100,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             Text(
-              "Edit Profile",
+              AppLocalizations.of(context)!.editProfile,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
 
@@ -109,7 +110,7 @@ class _EditProfileState extends State<EditProfile> {
                 saveChanges();
               },
               child: Text(
-                "Done",
+                AppLocalizations.of(context)!.done,
                 style: TextStyle(
                     color: ThemingColor.blueFontColor,
                     fontWeight: FontWeight.bold,
@@ -134,7 +135,7 @@ class _EditProfileState extends State<EditProfile> {
             TextButton(
               onPressed: () => pickImage(),
               child: Text(
-                "Change profile photo",
+                AppLocalizations.of(context)!.changeProfilePhoto,
                 style: TextStyle(
                     color: ThemingColor.blueFontColor,
                     fontWeight: FontWeight.bold,
@@ -149,7 +150,7 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               controller: usernameController,
               decoration: InputDecoration(
-                labelText: "Username",
+                labelText: AppLocalizations.of(context)!.username,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -159,7 +160,7 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               controller: bioController,
               decoration: InputDecoration(
-                labelText: "Bio",
+                labelText: AppLocalizations.of(context)!.bio,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -169,7 +170,7 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               controller: emailController,
               decoration: InputDecoration(
-                labelText: "Email",
+                labelText: AppLocalizations.of(context)!.email,
                 border: OutlineInputBorder(),
               ),
             ),

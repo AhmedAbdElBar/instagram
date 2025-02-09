@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/circle_avatar_with_border.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileImageAndFollowers extends StatelessWidget {
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -35,7 +36,7 @@ class ProfileImageAndFollowers extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Posts',
+                      AppLocalizations.of(context)!.posts,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
@@ -47,7 +48,7 @@ class ProfileImageAndFollowers extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Followers',
+                      AppLocalizations.of(context)!.followers,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
@@ -59,7 +60,7 @@ class ProfileImageAndFollowers extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Following',
+                      AppLocalizations.of(context)!.following,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],

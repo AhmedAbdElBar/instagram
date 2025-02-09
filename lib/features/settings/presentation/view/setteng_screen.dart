@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
-import 'package:instagram/core/theme/theme_provider.dart';
+import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/settings/data/show_language_bottom_sheet.dart';
 import 'package:instagram/features/settings/presentation/widgets/edit_profile.dart';
 import 'package:instagram/features/settings/presentation/widgets/settings_buttons.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SettingScreen extends StatelessWidget {
   static const String routname = "settings";
-  const SettingScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Settings",
+          AppLocalizations.of(context)!.settings,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -25,7 +25,7 @@ class SettingScreen extends StatelessWidget {
       body: Column(
         children: [
           SettingsButtons(
-              text: "language",
+              text: AppLocalizations.of(context)!.languages,
               icon: Icon(
                 Icons.language,
               ),
@@ -33,12 +33,15 @@ class SettingScreen extends StatelessWidget {
                 showLanguageBottomSheet(context);
               }),
           Container(
-            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+                border:
+                    Border.all(color: ThemingColor.lightGrayColor, width: 1)),
+            padding: EdgeInsets.all(8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Dark theme",
+                  AppLocalizations.of(context)!.darkTheme,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -54,7 +57,7 @@ class SettingScreen extends StatelessWidget {
             ),
           ),
           SettingsButtons(
-              text: "Edite Profile",
+              text: AppLocalizations.of(context)!.editProfile,
               icon: Icon(
                 Icons.edit,
               ),

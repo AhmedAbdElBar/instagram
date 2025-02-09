@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 void showLanguageBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -14,13 +14,13 @@ void showLanguageBottomSheet(BuildContext context) {
                 ListTile(
                   title: Text("English"),
                   onTap: () {
-                    // Handle language selection here
+                    
                   },
                 ),
                 ListTile(
-                  title: Text("Arabic"),
+                  title: Text("العربية"),
                   onTap: () {
-                    // Handle language selection here
+                    
                   },
                 ),
               ],

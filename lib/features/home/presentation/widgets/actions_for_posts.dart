@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/full_screen_image_viewer.dart';
@@ -70,7 +70,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Add a comment...',
+                  labelText: AppLocalizations.of(context)!.postComment,
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -79,7 +79,7 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Post Comment'),
+                child: Text(AppLocalizations.of(context)!.postComment),
               ),
             ],
           ),

@@ -5,9 +5,9 @@ import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/home/data/userdata.dart';
 import 'package:instagram/features/settings/data/update_user_data.dart';
+import 'package:instagram/features/settings/presentation/widgets/profile_fields.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class EditProfile extends StatefulWidget {
   static const String routname = "editProfile";
@@ -24,6 +24,8 @@ class _EditProfileState extends State<EditProfile> {
   late TextEditingController usernameController;
   late TextEditingController bioController;
   late TextEditingController emailController;
+  late TextEditingController phoneNumber;
+  late TextEditingController gender;
 
   @override
   void initState() {
@@ -79,7 +81,6 @@ class _EditProfileState extends State<EditProfile> {
     final themeProvider = ThemeProvider.of(context);
     return Scaffold(
       appBar: AppBar(
-
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Row(
@@ -96,7 +97,6 @@ class _EditProfileState extends State<EditProfile> {
                     color: themeProvider.themeMode == ThemeMode.dark
                         ? Colors.grey
                         : Colors.black),
-
               ),
             ),
             Text(
@@ -142,37 +142,97 @@ class _EditProfileState extends State<EditProfile> {
                     fontSize: 15),
               ),
             ),
-            const SizedBox(height: 20),
             Divider(),
-            const SizedBox(height: 10),
-
-            // Username field
-            TextField(
-              controller: usernameController,
-              decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.username,
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 10),
-
-            // Bio field
-            TextField(
-              controller: bioController,
-              decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.bio,
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 10),
-
-            // Email field
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.email,
-                border: OutlineInputBorder(),
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //username field
+                ProfileField(label: "Username", controller: usernameController),
+                Divider(),
+                //email field
+                ProfileField(label: "Email", controller: emailController),
+                Divider(),
+                //bio field
+                ProfileField(
+                    label: "Bio", controller: bioController, maxLines: 2),
+                Divider(),
+                Container(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Switch to Professonal Account",
+                      style: TextStyle(color: ThemingColor.blueFontColor),
+                    ),
+                  ),
+                ),
+                Divider(),
+                Container(
+                  child: Text(
+                    "Private Information",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ),
+                Divider(),
+                //phone field
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 100,
+                      child: Text(
+                        "Phone",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 0.5,
+                      color: ThemingColor.lightGrayColor,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "+ 123 456 789",
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 100,
+                      child: Text(
+                        "Gender",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 0.5,
+                      color: ThemingColor.lightGrayColor,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Male",
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(),
+              ],
             ),
           ],
         ),

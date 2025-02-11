@@ -17,6 +17,6 @@ class StorysData extends ChangeNotifier {
       );
     }).toList();
 
-    notifyListeners(); // Notify UI to update
+    notifyListeners(); 
   }
 }

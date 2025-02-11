@@ -11,6 +11,7 @@ import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:instagram/features/favorites_page/presentation/view/favoritesPage.dart';
 import 'package:instagram/features/home/data/storys_data.dart';
 import 'package:instagram/features/home/data/userdata.dart';
+import 'package:instagram/features/home/presentation/widgets/create_post.dart';
 import 'package:instagram/features/home/presentation/widgets/create_story.dart';
 import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
 
@@ -80,7 +81,9 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, CreatePost.routname);
+            },
             icon: ImageIcon(
               AssetImage("assets/icons/add.png"),
               size: 30,

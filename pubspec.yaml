@@ -46,6 +46,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  flutter_launcher_icons: ^0.14.3
 
 
 
@@ -59,6 +60,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/instagram.png"  # Path to your Instagram icon
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -80,7 +85,6 @@ flutter:
     - assets/icons/
     - assets/posts/
     - assets/videos/
-    - assets/lang/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

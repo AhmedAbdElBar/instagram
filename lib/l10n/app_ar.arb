@@ -52,5 +52,9 @@
   "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح!",
   "viewAllComments": "عرض جميع 16 تعليقًا",
   "edit": "تعديل",
-  "loremIpsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتتور..."
+  "loremIpsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتتور...",
+  "creatPost": "انشاء منشور",
+  "uploadPost": "نشر",
+  "yourPostUploadedSuccessfully": "تم رفع منشورك بنجاح!"
+
 }

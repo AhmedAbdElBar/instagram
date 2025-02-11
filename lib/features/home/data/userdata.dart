@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class Userdata {
   String? username;
   String? profileImage;
-  String? bio; // <-- Add bio field
+  String? bio; 
   final auth = FirebaseAuth.instance;
   final firestore = FirebaseFirestore.instance;
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/core/provider/language_provider.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/settings/data/show_language_bottom_sheet.dart';
@@ -12,6 +13,7 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = ThemeProvider.of(context);
+    final languageProvider = LanguageProvider();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

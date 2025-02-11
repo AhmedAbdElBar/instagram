@@ -52,5 +52,8 @@
   "cancel": "Cancel",
   "profileUpdatedSuccessfully": "Profile updated successfully!",
   "viewAllComments": "View all 16 comments",
-  "loremIpsum": "Lorem ipsum dolor sit amet, consectetur..."
+  "loremIpsum": "Lorem ipsum dolor sit amet, consectetur...",
+  "creatPost": "Create Post",
+  "uploadPost": "Up load Post",
+  "yourPostUploadedSuccessfully": "Your post uploaded successfully"
 }

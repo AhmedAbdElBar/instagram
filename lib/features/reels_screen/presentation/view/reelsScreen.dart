@@ -11,9 +11,9 @@ class Reelsscreen extends StatefulWidget {
 
 class _ReelsscreenState extends State<Reelsscreen> {
   final List<String> videos = [
-    'assets/videos/(1).MP4',
-    'assets/videos/(2).MP4',
-    'assets/videos/(3).MP4',
+    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
   ];
   @override
   Widget build(BuildContext context) {

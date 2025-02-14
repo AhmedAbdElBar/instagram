@@ -4,7 +4,7 @@ import 'package:video_player/video_player.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VideoPlayerItem extends StatefulWidget {
-  final String videoPath; 
+  final String videoPath;
   VideoPlayerItem({required this.videoPath});
 
   @override
@@ -74,7 +74,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
   @override
   void initState() {
     super.initState();
-    controller = VideoPlayerController.asset(widget.videoPath)
+    controller = VideoPlayerController.networkUrl(Uri.parse(widget.videoPath))
       ..initialize().then((_) {
         setState(() {});
         controller.play();

@@ -21,6 +21,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -69,7 +70,7 @@ class MyApp extends StatelessWidget {
         Myprofilepage.routname: (context) => Myprofilepage(),
         ExploreScreen.routeName: (context) => ExploreScreen(),
       },
-      initialRoute: LogIn.routname,
+      initialRoute: HomeScreen.routname,
     );
   }
 }

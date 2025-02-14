@@ -28,7 +28,7 @@ class _EditeAndOtherButtonsState extends State<EditeAndOtherButtons> {
               },
               buttonColor: themeProvider.themeMode == ThemeMode.dark
                   ? ThemingColor.darkGrayColor
-                  : ThemingColor.grayButtonColor,
+                  : ThemingColor.grayButtonColor,isEditeButton: true,
             ),
           ),
           SizedBox(

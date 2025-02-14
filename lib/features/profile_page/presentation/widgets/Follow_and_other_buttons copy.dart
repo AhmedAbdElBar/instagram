@@ -30,12 +30,12 @@ class _FollowAndOtherButtonsState extends State<FollowAndOtherButtons> {
               ? Buttonwidget(
                   text: AppLocalizations.of(context)!.following,
                   chick: FollowCange,
-                  buttonColor: ThemingColor.grayButtonColor,
+                  buttonColor: ThemingColor.grayButtonColor,isEditeButton: false,
                 )
               : Buttonwidget(
                   text: AppLocalizations.of(context)!.follow,
                   chick: FollowCange,
-                  buttonColor: ThemingColor.blueButtonColor,
+                  buttonColor: ThemingColor.blueButtonColor,isEditeButton: false,
                 ),
           SizedBox(
             height: 5,

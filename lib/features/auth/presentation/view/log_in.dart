@@ -6,6 +6,7 @@ import 'package:instagram/features/auth/presentation/view/Register.dart';
 import 'package:instagram/core/customized_button_widget.dart';
 import 'package:instagram/features/auth/presentation/widget/customized_textField.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class LogIn extends StatefulWidget {
   static const String routname = 'LogIn';
 
@@ -60,8 +61,11 @@ class _LogInState extends State<LogIn> {
                 text: AppLocalizations.of(context)!.login,
                 chick: () => data.login(context),
                 buttonColor: ThemingColor.blueButtonColor,
+                isEditeButton: false,
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -5,6 +5,7 @@ import 'package:instagram/features/auth/data/register_data.dart';
 import 'package:instagram/core/customized_button_widget.dart';
 import 'package:instagram/features/auth/presentation/widget/customized_textField.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Register extends StatelessWidget {
   static const String routname = "Register";
   RegisterData data = RegisterData();
@@ -72,6 +73,7 @@ class Register extends StatelessWidget {
                   text: AppLocalizations.of(context)!.signup,
                   chick: () => data.signUp(context),
                   buttonColor: ThemingColor.blueButtonColor,
+                  isEditeButton: false,
                 ),
               ],
             ),

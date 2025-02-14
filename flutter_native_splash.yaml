@@ -1,0 +1,18 @@
+flutter_native_splash:
+  android: true
+  ios: true
+  fullscreen: true
+
+  # Light mode settings
+  color: "#ffffff"  # Light mode background
+  image: "assets/images/instagranSplash.png"  # Light mode logo
+
+  # Dark mode settings
+  color_dark: "#000000"  # Dark mode background
+  image_dark: "assets/images/instagranSplash.png"  # Dark mode logo
+
+  android_12:
+    image: "assets/images/instagranSplash.png"
+    icon_background_color: "#ffffff"
+    image_dark: "assets/images/instagranSplash.png"
+    icon_background_color_dark: "#000000"

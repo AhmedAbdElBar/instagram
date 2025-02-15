@@ -1,5 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/provider/language_provider.dart';
 import 'package:instagram/core/theme/app_theme.dart';
@@ -46,11 +46,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LanguageProvider>(context);
     final themeProvider = ThemeProvider.of(context);
@@ -83,7 +78,28 @@ class _MyAppState extends State<MyApp> {
         Myprofilepage.routname: (context) => Myprofilepage(),
         ExploreScreen.routeName: (context) => ExploreScreen(),
       },
-      initialRoute: HomeScreen.routname,
+      home: AuthCheck(),
+    );
+  }
+}
+
+class AuthCheck extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Scaffold(
+            body: Center(
+                child: CircularProgressIndicator()), // Show loading screen
+          );
+        }
+        if (snapshot.hasData) {
+          return HomeScreen(); // If user is logged in, go to HomeScreen
+        }
+        return LogIn(); // Otherwise, go to LogIn screen
+      },
     );
   }
 }

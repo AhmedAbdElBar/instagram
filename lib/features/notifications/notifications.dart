@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/theme/colors_thems.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Notifications extends StatefulWidget {
   static const String routname = "Notifications";
@@ -51,18 +52,19 @@ class _NotificationsState extends State<Notifications> {
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       if (message.notification != null) {
-        String title = message.notification!.title ?? "No Title";
-        String body = message.notification!.body ?? "No Body";
-        setState(() {
-          notifications.insert(0, {"title": title, "body": body});
-        });
+        String title = message.notification!.title ??
+            AppLocalizations.of(context)!.noTitle;
+        String body =
+            message.notification!.body ?? AppLocalizations.of(context)!.noBody;
       }
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       if (message.notification != null) {
-        String title = message.notification!.title ?? "No Title";
-        String body = message.notification!.body ?? "No Body";
+        String title = message.notification!.title ??
+            AppLocalizations.of(context)!.noTitle;
+        String body =
+            message.notification!.body ?? AppLocalizations.of(context)!.noBody;
 
         showNotificationDetails({"title": title, "body": body});
         setState(() {
@@ -73,8 +75,10 @@ class _NotificationsState extends State<Notifications> {
 
     messaging.getInitialMessage().then((RemoteMessage? message) {
       if (message != null && message.notification != null) {
-        String title = message.notification!.title ?? "No Title";
-        String body = message.notification!.body ?? "No Body";
+        String title = message.notification!.title ??
+            AppLocalizations.of(context)!.noTitle;
+        String body =
+            message.notification!.body ?? AppLocalizations.of(context)!.noBody;
 
         showNotificationDetails({"title": title, "body": body});
         setState(() {
@@ -95,7 +99,7 @@ class _NotificationsState extends State<Notifications> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text("Close"),
+              child: Text(AppLocalizations.of(context)!.close),
             ),
           ],
         );
@@ -106,9 +110,10 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Notifications")),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.notifications)),
       body: notifications.isEmpty
-          ? Center(child: Text("No Notifications Yet!"))
+          ? Center(
+              child: Text(AppLocalizations.of(context)!.noNotificationsYet))
           : ListView.builder(
               padding: EdgeInsets.all(10),
               itemCount: notifications.length,

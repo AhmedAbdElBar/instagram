@@ -139,7 +139,7 @@ class _ProfilepageState extends State<Myprofilepage> {
                         child: story.storys.isEmpty
                             ? Center(
                                 child: Text(
-                                AppLocalizations.of(context)!.noStorys,
+                                AppLocalizations.of(context)!.noStories,
                               ))
                             : ListView.builder(
                                 scrollDirection: Axis.horizontal,

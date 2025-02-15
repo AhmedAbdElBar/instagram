@@ -21,7 +21,6 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     final themeProvider = ThemeProvider.of(context);
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Center(

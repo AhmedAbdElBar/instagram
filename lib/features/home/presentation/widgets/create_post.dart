@@ -73,7 +73,7 @@ class _CreatePostState extends State<CreatePost> {
     final themeProvider = ThemeProvider.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.creatPost),
+        title: Text(AppLocalizations.of(context)!.createPost),
         actions: [
           IconButton(
             icon: Icon(Icons.check),

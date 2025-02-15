@@ -44,7 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   return Center(child: CircularProgressIndicator());
                 }
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return Center(child: Text(AppLocalizations.of(context)!.noMessagesyet));
+                  return Center(child: Text(AppLocalizations.of(context)!.noMessagesYet));
                 }
 
                 final messages = snapshot.data!.docs.reversed.toList();

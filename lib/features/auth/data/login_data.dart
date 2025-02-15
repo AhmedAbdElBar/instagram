@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/features/home/presentation/view/home_screen.dart';
 
-class LoginData{
+class LoginData {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -17,8 +17,7 @@ class LoginData{
         return;
       }
 
-      UserCredential userCredential = await auth
-          .signInWithEmailAndPassword(email: email, password: password);
+      await auth.signInWithEmailAndPassword(email: email, password: password);
 
       // Navigate to the home screen
       Navigator.pushReplacementNamed(context, HomeScreen.routname);

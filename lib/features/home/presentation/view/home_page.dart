@@ -143,7 +143,7 @@ class _HomepageState extends State<Homepage> {
                             )
                           : Center(
                               child: Text(
-                                AppLocalizations.of(context)!.noStorys,
+                                AppLocalizations.of(context)!.noStories,
                                 style: TextStyle(color: ThemingColor.blackFont),
                               ),
                             ),

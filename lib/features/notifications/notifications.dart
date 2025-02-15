@@ -56,6 +56,10 @@ class _NotificationsState extends State<Notifications> {
             AppLocalizations.of(context)!.noTitle;
         String body =
             message.notification!.body ?? AppLocalizations.of(context)!.noBody;
+        showNotificationDetails({"title": title, "body": body});
+        setState(() {
+          notifications.insert(0, {"title": title, "body": body});
+        });
       }
     });
 

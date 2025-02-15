@@ -39,9 +39,9 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> refreshData() async {
-    await user.fetchUser(); // Re-fetch user data
-    await story.fetchStories(); // Re-fetch stories
-    setState(() {}); // Update UI
+    await user.fetchUser(); 
+    await story.fetchStories(); 
+    setState(() {}); 
   }
 
   @override

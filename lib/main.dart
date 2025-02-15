@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/core/provider/language_provider.dart';
 import 'package:instagram/core/theme/app_theme.dart';
@@ -10,6 +11,7 @@ import 'package:instagram/features/chat/presentation/view/caht_screen.dart';
 import 'package:instagram/features/home/presentation/view/home_screen.dart';
 import 'package:instagram/features/home/presentation/widgets/create_post.dart';
 import 'package:instagram/features/home/presentation/widgets/create_story.dart';
+import 'package:instagram/features/notifications/notifications.dart';
 import 'package:instagram/features/profile_page/presentation/view/myProfilePage.dart';
 import 'package:instagram/features/profile_page/presentation/view/profilePage.dart';
 import 'package:instagram/features/settings/presentation/view/setteng_screen.dart';
@@ -35,8 +37,18 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +71,7 @@ class MyApp extends StatelessWidget {
       themeMode: themeProvider.themeMode,
       routes: {
         LogIn.routname: (context) => LogIn(),
+        Notifications.routname: (context) => Notifications(),
         SettingScreen.routname: (context) => SettingScreen(),
         EditProfile.routname: (context) => EditProfile(),
         Register.routname: (context) => Register(),

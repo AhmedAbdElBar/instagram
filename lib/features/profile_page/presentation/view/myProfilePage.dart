@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/features/home/data/storys_data.dart';
 import 'package:instagram/features/home/data/userdata.dart';
+import 'package:instagram/features/notifications/notifications.dart';
 import 'package:instagram/features/profile_page/data/posts_data.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/Edite_and_other_buttons.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/customized_button_with_icon.dart';
@@ -43,13 +44,11 @@ class _ProfilepageState extends State<Myprofilepage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-
         elevation: 0,
         title: Row(
           children: [
             Text(
               user.username ?? AppLocalizations.of(context)!.loading,
-
             ),
             SizedBox(width: 5),
             Icon(
@@ -62,7 +61,9 @@ class _ProfilepageState extends State<Myprofilepage> {
         centerTitle: true,
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Notifications.routname);
+              },
               icon: ImageIcon(AssetImage("assets/icons/notifications.png"))),
           IconButton(
             onPressed: () {
@@ -83,7 +84,8 @@ class _ProfilepageState extends State<Myprofilepage> {
                 ///profile image and followers
                 ProfileImageAndFollowers(
                   image: user.profileImage ?? 'assets/posts/post (16).png',
-                  username: user.username ?? AppLocalizations.of(context)!.loading,
+                  username:
+                      user.username ?? AppLocalizations.of(context)!.loading,
                 ),
 
                 ///discription.
@@ -139,7 +141,6 @@ class _ProfilepageState extends State<Myprofilepage> {
                                 child: Text(
                                 AppLocalizations.of(context)!.noStorys,
                               ))
-
                             : ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: story.storys.length,

@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram/core/provider/theme_provider.dart';
+import 'package:instagram/features/home/data/userdata.dart';
 
 class CreateStory extends StatefulWidget {
   static const String routname = "create story";
@@ -15,7 +17,15 @@ class CreateStory extends StatefulWidget {
 
 class _CreateStoryState extends State<CreateStory> {
   final firestore = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
+  final user = Userdata();
   XFile? selectedFile;
+  @override
+  void initState() {
+    user.fetchUser();
+    super.initState();
+  }
+
   final TextEditingController captionController = TextEditingController();
 
   Future<void> pickImage() async {
@@ -28,14 +38,16 @@ class _CreateStoryState extends State<CreateStory> {
 
   uploadStory() async {
     if (selectedFile == null) return;
-    String username = "username";
+    String username = "${user.username}";
     String storyImage = selectedFile!.path;
+    String uid = auth.currentUser!.uid;
     String description = captionController.text;
 
     await firestore.collection("storys").add({
       'username': username,
       'storyImage': storyImage,
-      'description': description
+      'description': description,
+      'uid': uid
     });
     setState(() {
       selectedFile = null;
@@ -49,7 +61,8 @@ class _CreateStoryState extends State<CreateStory> {
       backgroundColor: Colors.green,
     ));
     Future.delayed(Duration(seconds: 0), () {
-      Navigator.pop(context); // Navigate back to the home screen
+      Navigator.pop(context);
+      setState(() {}); // Navigate back to the home screen
     });
   }
 
@@ -73,7 +86,6 @@ class _CreateStoryState extends State<CreateStory> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                
                 height: 400,
                 width: double.infinity,
                 color: themeProvier.themeMode == ThemeMode.dark
@@ -84,7 +96,9 @@ class _CreateStoryState extends State<CreateStory> {
                         File(selectedFile!.path),
                         fit: BoxFit.cover,
                       )
-                    : Center(child: Text(AppLocalizations.of(context)!.tapToSelectAnImage)),
+                    : Center(
+                        child: Text(
+                            AppLocalizations.of(context)!.tapToSelectAnImage)),
               ),
             ),
           ),

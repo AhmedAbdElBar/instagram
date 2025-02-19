@@ -5,9 +5,11 @@ import 'package:instagram/core/provider/language_provider.dart';
 import 'package:instagram/core/theme/app_theme.dart';
 import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:instagram/features/Explore_screen/presentation/view/exploreScreen.dart';
+import 'package:instagram/features/auth/data/auth_check.dart';
 import 'package:instagram/features/auth/presentation/view/Register.dart';
 import 'package:instagram/features/auth/presentation/view/log_in.dart';
 import 'package:instagram/features/chat/presentation/view/caht_screen.dart';
+import 'package:instagram/features/favorites_page/presentation/view/favoritesPage.dart';
 import 'package:instagram/features/home/presentation/view/home_screen.dart';
 import 'package:instagram/features/home/presentation/widgets/create_post.dart';
 import 'package:instagram/features/home/presentation/widgets/create_story.dart';
@@ -77,29 +79,11 @@ class _MyAppState extends State<MyApp> {
         Profilepage.routname: (context) => Profilepage(),
         Myprofilepage.routname: (context) => Myprofilepage(),
         ExploreScreen.routeName: (context) => ExploreScreen(),
+        FavoritesPage.routname: (context) => FavoritesPage(),
       },
       home: AuthCheck(),
     );
   }
 }
 
-class AuthCheck extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(
-            body: Center(
-                child: CircularProgressIndicator()), // Show loading screen
-          );
-        }
-        if (snapshot.hasData) {
-          return HomeScreen(); // If user is logged in, go to HomeScreen
-        }
-        return LogIn(); // Otherwise, go to LogIn screen
-      },
-    );
-  }
-}
+

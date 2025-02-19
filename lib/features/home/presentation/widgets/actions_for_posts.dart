@@ -1,14 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:instagram/features/favorites_page/data/favorites_data.dart';
-import 'package:instagram/features/home/presentation/widgets/post_widget.dart';
 import 'package:instagram/features/profile_page/presentation/widgets/full_screen_image_viewer.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ActionsForPosts extends StatefulWidget {
   final String postImage;
   final String username;
-  ActionsForPosts({required this.postImage, required this.username});
+  final String postCaption;
+  ActionsForPosts(
+      {required this.postImage,
+      required this.username,
+      required this.postCaption});
 
   @override
   State<ActionsForPosts> createState() => _ActionsForPostsState();
@@ -18,35 +21,31 @@ class _ActionsForPostsState extends State<ActionsForPosts> {
   bool isLoved = false;
   bool isBookmarked = false;
   bool showLoved = false;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  void toggleLove() {
+  void toggleLove() async {
+    isLoved = !isLoved;
+    showLoved = true;
+    if (isLoved) {
+      await firestore.collection("Favorites").add({
+        "username": widget.username,
+        "profileImage": widget.postImage,
+        "postImage": widget.postImage,
+        "caption": widget.postCaption,
+      });
+    } else {
+      QuerySnapshot snapshot = await firestore
+          .collection('Favorites')
+          .where('postImage', isEqualTo: widget.postImage)
+          .get();
+
+      for (var doc in snapshot.docs) {
+        await firestore.collection('Favorites').doc(doc.id).delete();
+      }
+    }
+    ;
     setState(() {
-      isLoved = !isLoved;
-      showLoved = true;
-      if (isLoved) {
-        FavoritesDataManager().addPost(
-          Post(
-            username: widget.username,
-            profileImage: widget.postImage,
-            postImage: widget.postImage,
-          ),
-        );
-      } else {
-        FavoritesDataManager().removePost(
-          Post(
-            username: widget.username,
-            profileImage: widget.postImage,
-            postImage: widget.postImage,
-          ),
-        );
-      }
-    });
-    Future.delayed(Duration(seconds: 1), () {
-      if (mounted) {
-        setState(() {
-          showLoved = false;
-        });
-      }
+      showLoved = false;
     });
   }
 

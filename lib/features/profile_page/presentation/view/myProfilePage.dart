@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/features/home/data/storys_data.dart';
@@ -41,6 +42,7 @@ class _ProfilepageState extends State<Myprofilepage> {
 
   @override
   Widget build(BuildContext context) {
+    String currentUserId = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -165,18 +167,49 @@ class _ProfilepageState extends State<Myprofilepage> {
                       ),
 
                       ///postes.
-                      GridView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.all(4),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 4,
-                          mainAxisSpacing: 4,
-                        ),
-                        itemCount: postsData.posts.length,
-                        itemBuilder: (context, index) {
-                          return postsData.posts[index];
+                      StreamBuilder(
+                        stream: FirebaseFirestore.instance
+                            .collection(
+                                'posts') // Ensure collection name is 'posts'
+                            .where('uid', isEqualTo: currentUserId)
+                            .snapshots(),
+                        builder:
+                            (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          if (!snapshot.hasData ||
+                              snapshot.data!.docs.isEmpty) {
+                            return Center(
+                              child: Text(
+                                "No posts found",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                            );
+                          }
+
+                          var posts = snapshot.data!.docs;
+                          return GridView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            padding: EdgeInsets.all(4),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              crossAxisSpacing: 4,
+                              mainAxisSpacing: 4,
+                            ),
+                            itemCount: posts.length,
+                            itemBuilder: (context, index) {
+                              var postData =
+                                  posts[index].data() as Map<String, dynamic>;
+
+                              return PostsInProfile(
+                                  image: postData['postImage']);
+                            },
+                          );
                         },
                       )
                     ],

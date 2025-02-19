@@ -7,7 +7,6 @@ import 'package:instagram/core/theme/colors_thems.dart';
 import 'package:instagram/core/provider/theme_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:instagram/features/chat/presentation/view/caht_screen.dart';
-import 'package:instagram/features/favorites_page/data/favorites_data.dart';
 import 'package:instagram/features/favorites_page/presentation/view/favoritesPage.dart';
 import 'package:instagram/features/home/data/storys_data.dart';
 import 'package:instagram/features/home/data/userdata.dart';
@@ -39,9 +38,9 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> refreshData() async {
-    await user.fetchUser(); 
-    await story.fetchStories(); 
-    setState(() {}); 
+    await user.fetchUser();
+    await story.fetchStories();
+    setState(() {});
   }
 
   @override
@@ -57,14 +56,7 @@ class _HomepageState extends State<Homepage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FavoritesPage(
-                    lovedPosts: FavoritesDataManager().lovedPosts,
-                  ),
-                ),
-              );
+              Navigator.pushNamed(context, FavoritesPage.routname);
             },
             icon: const Icon(
               Icons.favorite_border_outlined,
@@ -167,12 +159,12 @@ class _HomepageState extends State<Homepage> {
                   List<Post> posts = snapshot.data!.docs.map((doc) {
                     var data = doc.data() as Map<String, dynamic>;
                     return Post(
-                      username: data['username'] ?? 'Unknown',
-                      profileImage:
-                          data['profileImage'] ?? 'assets/posts/post (16).png',
-                      postImage:
-                          data['postImage'] ?? 'assets/posts/post (16).png',
-                    );
+                        username: data['username'] ?? 'Unknown',
+                        profileImage: data['profileImage'] ??
+                            'assets/posts/post (16).png',
+                        postImage:
+                            data['postImage'] ?? 'assets/posts/post (16).png',
+                        postCaption: data['caption'] ?? "No Caption");
                   }).toList();
 
                   return ListView.builder(

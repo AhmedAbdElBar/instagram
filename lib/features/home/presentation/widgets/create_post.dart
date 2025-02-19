@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,6 +17,7 @@ class CreatePost extends StatefulWidget {
 
 class _CreatePostState extends State<CreatePost> {
   final firestore = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
   XFile? selectedFile;
   final TextEditingController captionController = TextEditingController();
   final user = Userdata();
@@ -32,12 +34,16 @@ class _CreatePostState extends State<CreatePost> {
     if (selectedFile == null) return;
     String? username = user.username;
     String postImage = selectedFile!.path;
+    String caption = captionController.text.trim();
+    String uid = auth.currentUser!.uid;
     String? profileImage = user.profileImage;
 
     await firestore.collection("posts").add({
       'username': username,
       'postImage': postImage,
       'profileImage': profileImage,
+      'caption': caption,
+      'uid': uid
     });
     setState(() {
       selectedFile = null;
@@ -101,6 +107,16 @@ class _CreatePostState extends State<CreatePost> {
                     : Center(
                         child: Text(
                             AppLocalizations.of(context)!.tapToSelectAnImage)),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: captionController,
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(context)!.addACaption,
+                border: OutlineInputBorder(),
               ),
             ),
           ),

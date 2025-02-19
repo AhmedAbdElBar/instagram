@@ -9,11 +9,13 @@ class Post extends StatelessWidget {
   final String username;
   final String profileImage;
   final String postImage;
+  final String postCaption;
 
   Post({
     required this.username,
     required this.profileImage,
     required this.postImage,
+    required this.postCaption,
   });
 
   @override
@@ -76,9 +78,9 @@ class Post extends StatelessWidget {
 
           //post image & Actions (Like - Comment - Bookmark)
           ActionsForPosts(
-            username: username,
-            postImage: postImage,
-          ),
+              username: username,
+              postImage: postImage,
+              postCaption: postCaption),
           // Description
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -93,11 +95,11 @@ class Post extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: username,
+                        text: "$username : ",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
-                        text: AppLocalizations.of(context)!.loremIpsum,
+                        text: postCaption,
                       ),
                     ],
                   ),

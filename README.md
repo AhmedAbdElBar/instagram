@@ -30,8 +30,8 @@ The project focuses on reproducing the core functionality and user experience of
 |---------|--------------|-----------|
 |<img width="1080" height="2280" alt="Screenshot_1788579813" src="https://github.com/user-attachments/assets/9652cdc8-70c1-4e18-8cec-7f1477cd3307" />|<img width="1080" height="2280" alt="Screenshot_1788579820" src="https://github.com/user-attachments/assets/5555e44e-0d86-496b-8bb2-5b45a0265307" />| <img width="1080" height="2280" alt="Screenshot_1788579667" src="https://github.com/user-attachments/assets/b9b9af9f-dee1-40f6-9769-f73c24e7c141" />|
 
-| Real-Time Chat |
-|-----------------|
+| Real-Time Chat | | |
+|-----------------| | |
 |<img width="1080" height="2280" alt="Screenshot_1788579661" src="https://github.com/user-attachments/assets/36c67d3c-befb-4ed4-aeec-35922f905822" />|
 
 ---
